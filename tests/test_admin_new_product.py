@@ -3,7 +3,8 @@ import configparser
 from utils.browser_setup import BrowserSetup
 from pages.admin_page import AdminPage
 from pages.login_page import LoginPage
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CreateNewProductTest(unittest.TestCase):
@@ -31,12 +32,14 @@ class CreateNewProductTest(unittest.TestCase):
         admin_page = AdminPage(self.driver)
         admin_page.open_admin_page()
         create_new_product_page= admin_page.open_new_product_page()
-        create_new_product_page.enter_title("IPhone 16 Pro Max")
+        create_new_product_page.enter_title("IPhone 16 Pro Max 123")
         create_new_product_page.enter_description("This is Iphone 16 made in China")
         create_new_product_page.enter_price("3000")
+        create_new_product_page.click_add_photo()
+        create_new_product_page.enter_image_url("https://images.unsplash.com/photo-1726839662758-e3b5da59b0fb?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
         create_new_product_page.click_add_product()
-
-
+        # Kiểm tra xem thông báo thành công có xuất hiện hay không
+        assert create_new_product_page.is_success_message_appeared(), "Success message did not appear"
 
     def tearDown(self):
         return ""

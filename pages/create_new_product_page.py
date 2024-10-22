@@ -1,5 +1,7 @@
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CreateNewProductPage:
@@ -19,8 +21,12 @@ class CreateNewProductPage:
 
         self.photos_label = (By.XPATH, "//label[@for='field-:r5:']")  # Label cho Photos
         self.add_photo_button = (By.XPATH, "//button[text()='Add a Photo']")  # Nút "Add a Photo"
+        self.photo_input = (By.XPATH, "//input[@name='photos.0']")
 
         self.add_product_button = (By.XPATH, "//button[@type='submit']")  # Nút "Add Product"
+        self.message_create_product_successfully = (By.XPATH, "//span[text()='Add product successfully']")
+
+
 
     def enter_title(self, title):
         """Nhập Title vào trường Title."""
@@ -38,9 +44,25 @@ class CreateNewProductPage:
         """Nhấn nút 'Add a Photo'."""
         self.driver.find_element(*self.add_photo_button).click()
 
+    def enter_image_url(self, image):
+        """Nhấn nút 'Add a Photo'."""
+        self.driver.find_element(*self.photo_input).click()
+        self.driver.find_element(*self.photo_input).send_keys(image)
+
     def click_add_product(self):
         """Nhấn nút 'Add Product' để gửi form."""
         self.driver.find_element(*self.add_product_button).click()
 
+    def is_success_message_appeared(self):
+        try:
+            # Chờ đợi tối đa 10 giây cho thông báo "Add product successfully" xuất hiện
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(self.message_create_product_successfully)
+            )
+            print("Message 'Add product successfully' appeared!")
+            return True
+        except TimeoutException:
+            print("Message 'Add product successfully' did not appear.")
+            return False
 
 
