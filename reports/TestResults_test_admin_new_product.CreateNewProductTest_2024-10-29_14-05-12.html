@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2024-10-29 14:05:12</p>
+                <p class='attribute'><strong>Duration: </strong>28.44 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 1, Pass: 0, Error: 1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>test_admin_new_product.CreateNewProductTest</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_creat_new_product_successfully</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>.\resources\chromedriver.exe
+</p><p style="color:maroon;">NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//a[@href='/signin']/button"}
+  (Session info: chrome=130.0.6723.70); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF7B7483AB5+28005]
+	(No symbol) [0x00007FF7B73E83B0]
+	(No symbol) [0x00007FF7B728580A]
+	(No symbol) [0x00007FF7B72D5A3E]
+	(No symbol) [0x00007FF7B72D5D2C]
+	(No symbol) [0x00007FF7B731EA97]
+	(No symbol) [0x00007FF7B72FBA7F]
+	(No symbol) [0x00007FF7B731B8B3]
+	(No symbol) [0x00007FF7B72FB7E3]
+	(No symbol) [0x00007FF7B72C75C8]
+	(No symbol) [0x00007FF7B72C8731]
+	GetHandleVerifier [0x00007FF7B777643D+3118829]
+	GetHandleVerifier [0x00007FF7B77C6C90+3448640]
+	GetHandleVerifier [0x00007FF7B77BCF0D+3408317]
+	GetHandleVerifier [0x00007FF7B754A40B+841403]
+	(No symbol) [0x00007FF7B73F340F]
+	(No symbol) [0x00007FF7B73EF484]
+	(No symbol) [0x00007FF7B73EF61D]
+	(No symbol) [0x00007FF7B73DEB79]
+	BaseThreadInitThunk [0x00007FFB832A257D+29]
+	RtlUserThreadStart [0x00007FFB83D0AA58+40]
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "D:\Document\Tester\e-commerce-for-test-automation\tests\test_admin_new_product.py", line 33, in setUp
+    login_page.open_login_form()
+  File "D:\Document\Tester\e-commerce-for-test-automation\pages\login_page.py", line 15, in open_login_form
+    self.driver.find_element(*self.menu_login).click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Document\Tester\e-commerce-for-test-automation\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 748, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Document\Tester\e-commerce-for-test-automation\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+  File "D:\Document\Tester\e-commerce-for-test-automation\.venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//a[@href='/signin']/button"}
+  (Session info: chrome=130.0.6723.70); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF7B7483AB5+28005]
+	(No symbol) [0x00007FF7B73E83B0]
+	(No symbol) [0x00007FF7B728580A]
+	(No symbol) [0x00007FF7B72D5A3E]
+	(No symbol) [0x00007FF7B72D5D2C]
+	(No symbol) [0x00007FF7B731EA97]
+	(No symbol) [0x00007FF7B72FBA7F]
+	(No symbol) [0x00007FF7B731B8B3]
+	(No symbol) [0x00007FF7B72FB7E3]
+	(No symbol) [0x00007FF7B72C75C8]
+	(No symbol) [0x00007FF7B72C8731]
+	GetHandleVerifier [0x00007FF7B777643D+3118829]
+	GetHandleVerifier [0x00007FF7B77C6C90+3448640]
+	GetHandleVerifier [0x00007FF7B77BCF0D+3408317]
+	GetHandleVerifier [0x00007FF7B754A40B+841403]
+	(No symbol) [0x00007FF7B73F340F]
+	(No symbol) [0x00007FF7B73EF484]
+	(No symbol) [0x00007FF7B73EF61D]
+	(No symbol) [0x00007FF7B73DEB79]
+	BaseThreadInitThunk [0x00007FFB832A257D+29]
+	RtlUserThreadStart [0x00007FFB83D0AA58+40]
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 0, Error: 1 -- Duration: 28.44 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html
