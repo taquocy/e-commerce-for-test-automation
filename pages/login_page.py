@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
-        #####
+
         # Xác định các phần tử trên trang login
         self.menu_login =  (By.XPATH, "//a[@href='/signin']/button")
         self.username_input = (By.NAME, "email")  # Tìm trường username
