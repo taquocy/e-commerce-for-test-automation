@@ -5,7 +5,6 @@ class LoginPage:
     def __init__(self, driver):
         self.driver = driver
 
-
         # Xác định các phần tử trên trang login
         self.menu_login =  (By.XPATH, "//a[@href='/signin']/button")
         self.menu_register =  (By.XPATH, "//a[@href='/signup']/button")

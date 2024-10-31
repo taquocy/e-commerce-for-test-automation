@@ -36,7 +36,7 @@ class LoginTest(unittest.TestCase):
         login_page.click_login()
 
         admin_page = AdminPage(self.driver)
-        admin_page.check_admin_page_display()
+        admin_page.click_add_to_basket()
 
 
     def test_valid_login_with_user_account(self):
