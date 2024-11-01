@@ -36,7 +36,7 @@ class CreateNewProductTest(unittest.TestCase):
         login_page.enter_password("admin123")
         login_page.click_login()
 
-    def test_creat_new_product_successfully(self):
+    def test_create_new_product_successfully(self):
         admin_page = AdminPage(self.driver)
         admin_page.open_admin_page()
         create_new_product_page= admin_page.open_new_product_page()
