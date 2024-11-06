@@ -13,6 +13,9 @@ from utils.browser_setup import BrowserSetup
 
 class RegisterTest(unittest.TestCase):
 
+
+    
+
     def setUp(self):
         # Read the config.ini file
         config = configparser.ConfigParser()
