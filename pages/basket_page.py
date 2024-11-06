@@ -16,9 +16,11 @@ class BasketPage:
     def remove_item_from_basket(self):
         self.driver.find_element(*self.remove_button).click()
 
+
     # Hàm để mở giỏ hàng
     def open_basket(self):
         self.driver.find_element(*self.basket_button).click()
+
 
     # Hàm để mở trang profile
     def open_profile(self):
@@ -27,6 +29,7 @@ class BasketPage:
     # Hàm để lấy src của hình ảnh sản phẩm 
     def get_item_image_src(self):
         return self.driver.find_element(*self.item_image).get_attribute("src")
+
 
     # Hàm để lấy tổng tiền
     def get_total_price(self):
