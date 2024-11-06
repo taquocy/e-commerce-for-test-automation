@@ -11,7 +11,6 @@ from pages.register_page import RegisterPage
 from utils.browser_setup import BrowserSetup
 
 
-
 class RegisterTest(unittest.TestCase):
 
     def setUp(self):
@@ -26,7 +25,6 @@ class RegisterTest(unittest.TestCase):
         self.driver = BrowserSetup.get_driver()
         self.driver.get(self.register_url)  # Navigate to the registration page
 
-
     def test_valid_register_new_user(self):
         register_page = RegisterPage(self.driver)
 
@@ -37,7 +35,6 @@ class RegisterTest(unittest.TestCase):
         register_page.enter_confirm_password("password123")
         register_page.click_register()
 
-
         # Add assertions to verify successful registration
         # Example: Check if a success message or redirection occurs.
         # Modify the XPath to match the actual success message element in your application
@@ -46,7 +43,6 @@ class RegisterTest(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-
 
 
 if __name__ == "__main__":
