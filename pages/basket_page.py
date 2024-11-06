@@ -31,6 +31,9 @@ class BasketPage:
         return self.driver.find_element(*self.item_image).get_attribute("src")
 
 
-    # Hàm để lấy tổng tiền
+
+
+
+    # Hàm để lấy tổng tiền yyyyyy
     def get_total_price(self):
         return self.driver.find_element(*self.total_price).text
