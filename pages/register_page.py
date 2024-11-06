@@ -11,7 +11,6 @@ class RegisterPage:
         self.confirm_password_input = (By.XPATH, "//*[@id='field-:r2:']")  # Confirm password field
         self.register_button = (By.XPATH, "//button[@type='submit']")  # Submit button
 
-
     # Method to open the registration form
     def open_register_form(self):
         self.driver.find_element(*self.menu_register).click()

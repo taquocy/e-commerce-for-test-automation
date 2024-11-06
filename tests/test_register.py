@@ -10,7 +10,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from pages.register_page import RegisterPage
 from utils.browser_setup import BrowserSetup
 
-
 class RegisterTest(unittest.TestCase):
 
     def setUp(self):
@@ -43,7 +42,6 @@ class RegisterTest(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-
 
 if __name__ == "__main__":
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
