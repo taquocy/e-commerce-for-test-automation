@@ -17,6 +17,7 @@ class HomePage:
         """Nhấn nút 'Add to Basket'."""
         self.driver.find_element(*self.add_to_basket_button).click()
 
+
     def click_add_to_cart(self):
         """Nhấn nút 'Add to Cart'."""
         self.driver.find_element(*self.add_to_cart_button).click()
