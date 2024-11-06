@@ -11,6 +11,7 @@ from pages.register_page import RegisterPage
 from utils.browser_setup import BrowserSetup
 
 class RegisterTest(unittest.TestCase):
+ 
 
     def setUp(self):
         # Read the config.ini file
@@ -23,6 +24,7 @@ class RegisterTest(unittest.TestCase):
         # Initialize the browser
         self.driver = BrowserSetup.get_driver()
         self.driver.get(self.register_url)  # Navigate to the registration page
+
 
     def test_valid_register_new_user(self):
         register_page = RegisterPage(self.driver)
