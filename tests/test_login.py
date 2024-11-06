@@ -37,6 +37,24 @@ class LoginTest(unittest.TestCase):
 
         admin_page = AdminPage(self.driver)
         admin_page.check_admin_page_display()
+    
+    def test_valid_login_with_user_account(self):
+        login_page = LoginPage(self.driver)
+
+        login_page.open_login_form()
+        # Nhập thông tin đăng nhập
+        #1. Enter a valid email in the "E-mail" field
+        login_page.enter_username("user@gmail.com")
+        
+        #2. Enter the correct password in the "Password" field
+        login_page.enter_password("Y649394$y")
+        
+        #3. Click the "Sign In" button
+        login_page.click_login()
+
+        # admin_page = AdminPage(self.driver)
+        # admin_page.check_admin_page_display()
+
 
 
     def tearDown(self):
