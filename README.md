@@ -15,6 +15,7 @@ pip install selenium html-testRunner
 python -m unittest discover -s tests
 python -m unittest tests.test_login
 python -m unittest tests.test_admin_new_product
+python -m unittest tests.test_register
 
 python tests/run_tests.py
 

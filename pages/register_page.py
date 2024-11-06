@@ -8,7 +8,7 @@ class RegisterPage:
         self.menu_register = (By.XPATH, "//a[@href='/signup']/button")  # Button to open registration form
         self.email_input = (By.NAME, "email")  # Email input field
         self.password_input = (By.NAME, "password")  # Password input field
-        self.confirm_password_input = (By.NAME, "//*[@id='field-:r2:']")  # Confirm password field
+        self.confirm_password_input = (By.XPATH, "//*[@id='field-:r2:']")  # Confirm password field
         self.register_button = (By.XPATH, "//button[@type='submit']")  # Submit button
 
     # Method to open the registration form
