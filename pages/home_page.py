@@ -5,7 +5,6 @@ class HomePage:
         self.driver = driver
 
 
-        #Xpath
         self.login_button = (By.XPATH, "//button[contains(text(), 'Login')]")
         self.register_button = (By.XPATH, "//button[contains(text(), 'Register')]")
         self.product_card = (By.XPATH, "//img[@alt='Product']")  
@@ -26,7 +25,7 @@ class HomePage:
 
     def click_add_to_cart(self):
         self.driver.find_element(*self.add_to_cart_link).click()
-
+ 
     def get_product_title(self):
         return self.driver.find_element(*self.product_title).text
     
@@ -35,3 +34,4 @@ class HomePage:
 
     def get_product_price(self):
         return self.driver.find_element(*self.product_price).text
+
