@@ -12,6 +12,8 @@ class AdminPage:
 
     def open_admin_page(self):
         self.driver.find_element(*self.menu_admin).click()
+        
+        
     def open_new_product_page(self):
         self.driver.find_element(*self.new_product_link).click()
         return CreateNewProductPage(self.driver)
