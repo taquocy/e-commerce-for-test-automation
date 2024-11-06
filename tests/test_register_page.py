@@ -1,37 +1,48 @@
-from selenium.webdriver.common.by import By
+import unittest
+import configparser
 
-class RegisterPage:
-    def __init__(self, driver):
-        self.driver = driver
+import HtmlTestRunner
+import sys
+import os
 
-        # Xác định các phần tử trên trang đăng ký
-        self.menu_register = (By.XPATH, "//a[@href='/register']/button")
-        self.username_input = (By.NAME, "username")  # Tìm trường tên đăng nhập
-        self.email_input = (By.NAME, "email")  # Tìm trường email
-        self.password_input = (By.NAME, "password")  # Tìm trường mật khẩu
-        self.confirm_password_input = (By.NAME, "confirm_password")  # Tìm trường xác nhận mật khẩu
-        self.register_button = (By.XPATH, "//button[@type='submit']")  # Nút submit
+# Thêm đường dẫn đến thư mục gốc vào sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from pages.login_page import RegisterPage
+from pages.admin_page import AdminPage
+from utils.browser_setup import BrowserSetup
 
-    # Mở form đăng ký
-    def open_register_form(self):
-        self.driver.find_element(*self.menu_register).click()
 
-    # Nhập tên đăng nhập
-    def enter_username(self, username):
-        self.driver.find_element(*self.username_input).send_keys(username)
+class RegisterTest(unittest.TestCase):
 
-    # Nhập email
-    def enter_email(self, email):
-        self.driver.find_element(*self.email_input).send_keys(email)
+    def setUp(self):
+        # Đọc file config.ini
+        config = configparser.ConfigParser()
+        config.read('config.ini')
 
-    # Nhập mật khẩu
-    def enter_password(self, password):
-        self.driver.find_element(*self.password_input).send_keys(password)
+        # Lấy URL trang register từ file config
+        self.Register_url = config['app']['login_url']
 
-    # Nhập lại mật khẩu để xác nhận
-    def enter_confirm_password(self, confirm_password):
-        self.driver.find_element(*self.confirm_password_input).send_keys(confirm_password)
+        # Khởi tạo trình duyệt
+        self.driver = BrowserSetup.get_driver()
+        self.driver.get(self.Register_url)  # Sử dụng URL từ file config
 
-    # Nhấn nút đăng ký
-    def click_register(self):
-        self.driver.find_element(*self.register_button).click()
+    def test_valid_register_with_admin_account(self):
+        login_page = RegisterPage(self.driver)
+
+        login_page.open_register_form()
+        # Nhập thông tin đăng nhập
+        login_page.enter_username("superadmin@gmail.com")
+        login_page.enter_password("admin123")
+        login_page.click_login()
+
+        admin_page = AdminPage(self.driver)
+        admin_page.check_admin_page_display()
+
+
+    def tearDown(self):
+        self.driver.quit()
+
+
+if __name__ == "__main__":
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
+
