@@ -8,6 +8,9 @@ class AdminPage:
 
 
 
+
+
+
         # Xác định các phần tử trên trang login
         self.menu_admin =  (By.XPATH, "//a[@href='/admin']/button")
         self.new_product_link = (By.XPATH, "//a[@href='/admin/products/new']/button")
