@@ -21,7 +21,7 @@ class HomePageTest(unittest.TestCase):
 
         self.driver = BrowserSetup.get_driver()
         self.driver.get(self.home_url)
-
+ 
     def test_product_details_display(self):
         home_page = HomePage(self.driver)
 
@@ -37,7 +37,7 @@ class HomePageTest(unittest.TestCase):
         home_page = HomePage(self.driver)
 
         home_page.click_add_to_basket()
-
+ 
     def test_add_to_cart(self):
         home_page = HomePage(self.driver)
 
@@ -49,7 +49,7 @@ class HomePageTest(unittest.TestCase):
         home_page.click_login()
 
         home_page.click_register()
-
+ 
     def tearDown(self):
         self.driver.quit()
 
