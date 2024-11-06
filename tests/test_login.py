@@ -56,7 +56,22 @@ class LoginTest(unittest.TestCase):
         # admin_page.check_admin_page_display()
 
 
+    def test_Empty_email_and_password_fields_user_account(self):
+        login_page = LoginPage(self.driver)
 
+        login_page.open_login_form()
+        # Trống trường email và mật khẩu
+        #1. Enter a valid email in the "E-mail" field
+        login_page.enter_username("user@gmail.com")
+        
+        #2. Enter an incorrect password in the "Password" field
+        login_page.enter_password("Y6493454$23")
+        
+        #3. Click the "Sign In" button
+        login_page.click_login()
+
+        # admin_page = AdminPage(self.driver)
+        # admin_page.check_admin_page_display()
     def tearDown(self):
         self.driver.quit()
 
