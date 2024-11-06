@@ -5,7 +5,7 @@ class HomePage:
         self.driver = driver
 
 
-        #Xpath 123
+        #Xpath
         self.login_button = (By.XPATH, "//button[contains(text(), 'Login')]")
         self.register_button = (By.XPATH, "//button[contains(text(), 'Register')]")
         self.product_card = (By.XPATH, "//img[@alt='Product']")  
