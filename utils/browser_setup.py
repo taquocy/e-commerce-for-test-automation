@@ -1,18 +1,20 @@
 import configparser
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
 class BrowserSetup:
     @staticmethod
     def get_driver():
-        # Đọc file config.ini
+        # Load configuration file
         config = configparser.ConfigParser()
-        config.read('config.ini')  # Đọc file config.ini từ thư mục gốc
+        config.read('path_to_your_config.ini')  # Path to your config file
 
-        # Lấy path driver từ phần cấu hình webdriver
+        # Get the driver path from the configuration
         driver_path = config['webdriver']['driver_path']
 
-        # Tạo instance của WebDriver (Chrome ở đây)
-        driver = webdriver.Chrome(executable_path=driver_path)
-        driver.implicitly_wait(26)
-        driver.maximize_window()
+        # Create a Service object with the driver path
+        service = Service(driver_path)
+
+        # Initialize the Chrome driver with the service
+        driver = webdriver.Chrome(service=service)
         return driver

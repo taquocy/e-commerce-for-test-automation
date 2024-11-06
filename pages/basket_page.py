@@ -6,10 +6,10 @@ class BasketPage:
 
         # Xác định các phần tử trên trang giỏ hàng
 
-        self.remove_button = (By.XPATH, "//*[@id='content']/div/ul/li[2]/button")  
+        self.remove_button = (By.XPATH, "//*[@id='content']/div//button")  
         self.basket_button = (By.XPATH, "//*[@id='root']/nav/div[2]/a[1]/button")  
         self.profile_button = (By.XPATH, "//*[@id='root']/nav/div[2]/a[2]/button")  
-        self.item_image = (By.XPATH, "//*[@id='content']/div/ul/li[2]/a/img")  
+        self.item_image = (By.XPATH, "//*[@id='content']/div//a/img")  
         self.total_price = (By.XPATH, "//*[@id='content']/div/span") 
 
     # Hàm để nhấn nút "Remove from Basket" cho item 
