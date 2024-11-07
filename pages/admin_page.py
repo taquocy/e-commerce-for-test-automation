@@ -2,6 +2,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from pages.create_new_product_page import CreateNewProductPage
 
+
 class AdminPage:
     def __init__(self, driver):
         self.driver = driver
@@ -12,6 +13,7 @@ class AdminPage:
 
     def open_admin_page(self):
         self.driver.find_element(*self.menu_admin).click()
+
     def open_new_product_page(self):
         self.driver.find_element(*self.new_product_link).click()
         return CreateNewProductPage(self.driver)
@@ -27,4 +29,3 @@ class AdminPage:
 
         except NoSuchElementException:
             print("Admin button not found!")
-
