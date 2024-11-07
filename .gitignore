@@ -1,0 +1,6 @@
+reports/
+utils/
+tests/__pycache__/
+pages/__pycache__/
+resources/
+config.ini
