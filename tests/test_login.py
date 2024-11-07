@@ -38,6 +38,21 @@ class LoginTest(unittest.TestCase):
         admin_page = AdminPage(self.driver)
         admin_page.check_admin_page_display()
 
+    def test_user_can_NOT_login_with_Non_exist_account(self):
+        #1. Navigate to URL: https://e-commerce-for-testing.onrender.com/
+        #2.Go to Login page
+        login_page = LoginPage(self.driver)
+        login_page.open_login_form()
+        #3.Enter info tothe fields:
+        #- Email: ngominh01 @ gmail.com
+        login_page.enter_username("ngominh01 @ gmail.com")
+        #- Password: 1235
+        login_page.enter_password("1235")
+        #4.Click Loginbutton
+        login_page.click_login()
+        #5 check point
+        #A message is displayed to inform users that the email address was not found.Please...
+        login_page.checkErrorMessageEmailWrongAppear()
 
     def tearDown(self):
         self.driver.quit()

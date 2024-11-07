@@ -1,3 +1,4 @@
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 
@@ -10,6 +11,7 @@ class LoginPage:
         self.username_input = (By.NAME, "email")  # Tìm trường username
         self.password_input = (By.NAME, "password")  # Tìm trường password
         self.login_button = (By.XPATH, "//button[@type='submit']")  # Nút submit
+        self.error_message_wrong_email = (By.XPATH, "//div[text()='The email address was not found.']")
 
     def open_login_form(self):
         self.driver.find_element(*self.menu_login).click()
@@ -24,3 +26,14 @@ class LoginPage:
     # Hàm để nhấn nút login
     def click_login(self):
         self.driver.find_element(*self.login_button).click()
+
+    def checkErrorMessageEmailWrongAppear(self):
+        try:
+            # Tìm nút Admin bằng XPath
+            erorMessage = self.driver.find_element(By.XPATH, self.error_message_wrong_email)
+            # Kiểm tra xem error messsage có tồn tại không
+            assert erorMessage is not None, "Error message does not exist!"
+            print("Error message exists!")
+
+        except NoSuchElementException:
+            print("Error message not found!")
