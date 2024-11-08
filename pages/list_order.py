@@ -1,25 +1,18 @@
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-from pages.create_new_product_page import CreateNewProductPage
 
-class AdminPage:
+class OrderPage:
     def __init__(self, driver):
         self.driver = driver
 
         # Xác định các phần tử trên trang login
-        self.menu_admin =  (By.XPATH, "//a[@href='/admin']/button")
+        self.menu_admin =  (By.XPATH, "//button[text()='Admin']")
         self.order = (By.XPATH, "//button[text()='Orders']")
-        self.new_product_link = (By.XPATH, "//a[@href='/admin/products/new']/button")
 
     def open_admin_page(self):
         self.driver.find_element(*self.menu_admin).click()
     def open_order_page(self):
         self.driver.find_element(*self.order).click()
-    def open_new_product_page(self):
-        self.driver.find_element(*self.new_product_link).click()
-        return CreateNewProductPage(self.driver)
-    
-
 
     def check_admin_page_display(self):
         try:
