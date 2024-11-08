@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2024-11-01 15:08:12</p>
+                <p class='attribute'><strong>Duration: </strong>43.41 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 1, Pass: 0, Error: 1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>test_admin_new_product.CreateNewProductTest</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_create_new_product_successfully</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="field-:rd:"]"}
+  (Session info: chrome=130.0.6723.92); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF62790B675+29573]
+	(No symbol) [0x00007FF6278804A0]
+	(No symbol) [0x00007FF62773B6EA]
+	(No symbol) [0x00007FF62778F815]
+	(No symbol) [0x00007FF62778FA6C]
+	(No symbol) [0x00007FF6277DB917]
+	(No symbol) [0x00007FF6277B733F]
+	(No symbol) [0x00007FF6277D86BC]
+	(No symbol) [0x00007FF6277B70A3]
+	(No symbol) [0x00007FF6277812DF]
+	(No symbol) [0x00007FF627782441]
+	GetHandleVerifier [0x00007FF627C3C5BD+3375821]
+	GetHandleVerifier [0x00007FF627C879B7+3684039]
+	GetHandleVerifier [0x00007FF627C7CDDB+3640043]
+	GetHandleVerifier [0x00007FF6279CB7F6+816390]
+	(No symbol) [0x00007FF62788B7AF]
+	(No symbol) [0x00007FF6278875D4]
+	(No symbol) [0x00007FF627887770]
+	(No symbol) [0x00007FF6278765CF]
+	BaseThreadInitThunk [0x00007FFB15A7257D+29]
+	RtlUserThreadStart [0x00007FFB17D8AF08+40]
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "C:\Users\TuanPham\Documents\VS_Code\Python2\Testing\e-commerce-for-test-automation\tests\test_admin_new_product.py", line 44, in test_create_new_product_successfully
+    create_new_product_page.enter_description("This is Iphone 16 made in China")
+  File "C:\Users\TuanPham\Documents\VS_Code\Python2\Testing\e-commerce-for-test-automation\pages\create_new_product_page.py", line 37, in enter_description
+    self.driver.find_element(*self.description_input).send_keys(description)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\TuanPham\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 766, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\TuanPham\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 380, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\TuanPham\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="field-:rd:"]"}
+  (Session info: chrome=130.0.6723.92); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF62790B675+29573]
+	(No symbol) [0x00007FF6278804A0]
+	(No symbol) [0x00007FF62773B6EA]
+	(No symbol) [0x00007FF62778F815]
+	(No symbol) [0x00007FF62778FA6C]
+	(No symbol) [0x00007FF6277DB917]
+	(No symbol) [0x00007FF6277B733F]
+	(No symbol) [0x00007FF6277D86BC]
+	(No symbol) [0x00007FF6277B70A3]
+	(No symbol) [0x00007FF6277812DF]
+	(No symbol) [0x00007FF627782441]
+	GetHandleVerifier [0x00007FF627C3C5BD+3375821]
+	GetHandleVerifier [0x00007FF627C879B7+3684039]
+	GetHandleVerifier [0x00007FF627C7CDDB+3640043]
+	GetHandleVerifier [0x00007FF6279CB7F6+816390]
+	(No symbol) [0x00007FF62788B7AF]
+	(No symbol) [0x00007FF6278875D4]
+	(No symbol) [0x00007FF627887770]
+	(No symbol) [0x00007FF6278765CF]
+	BaseThreadInitThunk [0x00007FFB15A7257D+29]
+	RtlUserThreadStart [0x00007FFB17D8AF08+40]
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 0, Error: 1 -- Duration: 43.41 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html
