@@ -11,6 +11,8 @@ class RegisterPage:
         self.password_confirm_input = (By.XPATH, "//input[@name='passwordConfirm']")  # Tìm trường password
         self.sign_up_button = (By.XPATH, "//button[text()='Sign Up']")  # Nút submit
 
+
+
     def open_login_form(self):
         self.driver.find_element(*self.menu_login).click()
     # Hàm để nhập tên đăng nhập
