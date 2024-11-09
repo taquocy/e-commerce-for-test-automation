@@ -17,6 +17,9 @@ class LoginPage:
         
         
         
+        
+        
+        
 
     def open_login_form(self):
         self.driver.find_element(*self.menu_login).click()
