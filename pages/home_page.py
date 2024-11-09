@@ -15,6 +15,7 @@ class HomePage:
         self.add_to_cart_link = (By.XPATH, "//div[@id='content']//button[2]")
 
     def click_login(self):
+        
         self.driver.find_element(*self.login_button).click()
 
     def click_register(self):
