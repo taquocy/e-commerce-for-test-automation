@@ -45,7 +45,7 @@ class ProfileTest(unittest.TestCase):
         update_profile_page.click_update_profile()
 
         # Kiểm tra xem thông báo thành công có xuất hiện hay không
-        assert update_profile_page.is_error_message_enter_capital_letters_appeared(), "Error message did not appear"
+        assert update_profile_page.is_message_appeared("Enter capital letters!", update_profile_page.error_message_enter_capital_letters), "Error message did not appear"
 
     def tearDown(self):
         self.driver.quit()

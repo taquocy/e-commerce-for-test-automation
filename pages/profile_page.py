@@ -31,69 +31,14 @@ class ProfilePage:
     def click_update_profile(self):
         self.driver.find_element(*self.update_profile_button).click()
 
-    def is_success_message_appeared(self):
+    def is_message_appeared(self, message, xpath):
         try:
-            # Chờ đợi tối đa 3 giây cho thông báo "Update profile successfully" xuất hiện
+            # Chờ đợi tối đa 3 giây cho thông báo xuất hiện
             WebDriverWait(self.driver, 3).until(
-                EC.presence_of_element_located(self.message_update_profile_successfully)
+                EC.presence_of_element_located(xpath)
             )
-            print("Message 'Update profile successfully' appeared!")
+            print("Message '{message}' appeared!")
             return True
         except TimeoutException:
-            print("Message 'Update profile successfully' did not appear.")
-            return False
-    def is_error_message_missing_special_characters_appeared(self):
-        try:
-            # Chờ đợi tối đa 3 giây cho thông báo "Enter additional special characters!" xuất hiện
-            WebDriverWait(self.driver, 3).until(
-                EC.presence_of_element_located(self.error_message_missing_special_characters)
-            )
-            print("Message 'Enter additional special characters!' appeared!")
-            return True
-        except TimeoutException:
-            print("Message 'Enter additional special characters!' did not appear.")
-            return False
-    def is_error_message_missing_capital_letters_and_special_characters_appeared(self):
-        try:
-            # Chờ đợi tối đa 3 giây cho thông báo "Enter capital letters and special characters!" xuất hiện
-            WebDriverWait(self.driver, 3).until(
-                EC.presence_of_element_located(self.error_message_missing_capital_letters_and_special_characters)
-            )
-            print("Message 'Enter capital letters and special characters!' appeared!")
-            return True
-        except TimeoutException:
-            print("Message 'Enter capital letters and special characters!' did not appear.")
-            return False
-    def is_error_message_password_cannot_be_blank_appeared(self):
-        try:
-            # Chờ đợi tối đa 3 giây cho thông báo "Password cannot be blank!" xuất hiện
-            WebDriverWait(self.driver, 3).until(
-                EC.presence_of_element_located(self.error_message_password_cannot_be_blank)
-            )
-            print("Message 'Password cannot be blank!' appeared!")
-            return True
-        except TimeoutException:
-            print("Message 'Password cannot be blank!' did not appear.")
-            return False
-    def is_error_message_enter_capital_letters_appeared(self):
-        try:
-            # Chờ đợi tối đa 3 giây cho thông báo "Enter capital letters!" xuất hiện
-            WebDriverWait(self.driver, 3).until(
-                EC.presence_of_element_located(self.error_message_password_cannot_be_blank)
-            )
-            print("Message 'Enter capital letters!' appeared!")
-            return True
-        except TimeoutException:
-            print("Message 'Enter capital letters!' did not appear.")
-            return False
-    def is_password_length_error_message(self):
-        try:
-            # Chờ đợi tối đa 3 giây cho thông báo "Password must be more than 6 characters!" xuất hiện
-            WebDriverWait(self.driver, 3).until(
-                EC.presence_of_element_located(self.password_length_error_message)
-            )
-            print("Message 'Password must be more than 6 characters!' appeared!")
-            return True
-        except TimeoutException:
-            print("Message 'Password must be more than 6 characters!' did not appear.")
+            print("Message '{message}' did not appear.")
             return False

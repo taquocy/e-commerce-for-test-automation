@@ -44,7 +44,7 @@ class ProfileTest(unittest.TestCase):
         update_profile_page.click_update_profile()
 
         # Kiểm tra xem thông báo thành công có xuất hiện hay không
-        assert update_profile_page.is_error_message_missing_special_characters_appeared(), "Error message did not appear"
+        assert update_profile_page.is_message_appeared("Enter additional special characters!", update_profile_page.error_message_missing_special_characters), "Error message did not appear"
 
     def tearDown(self):
         self.driver.quit()

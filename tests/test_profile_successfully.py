@@ -44,7 +44,7 @@ class ProfileTest(unittest.TestCase):
         update_profile_page.click_update_profile()
 
         # Kiểm tra xem thông báo thành công có xuất hiện hay không
-        assert update_profile_page.is_success_message_appeared(), "Success message did not appear"
+        assert update_profile_page.is_message_appeared("Update Profile successfully", update_profile_page.message_update_profile_successfully), "Success message did not appear"
 
     def tearDown(self):
         self.driver.quit()

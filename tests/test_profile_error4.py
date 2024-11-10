@@ -45,7 +45,7 @@ class ProfileTest(unittest.TestCase):
         update_profile_page.click_update_profile()
 
         # Kiểm tra xem thông báo thành công có xuất hiện hay không
-        assert update_profile_page.is_password_length_error_message(), "Error message did not appear"
+        assert update_profile_page.is_message_appeared("Password must be more than 6 characters!", update_profile_page.password_length_error_message), "Error message did not appear"
 
     def tearDown(self):
         self.driver.quit()
