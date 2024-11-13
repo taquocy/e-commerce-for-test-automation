@@ -4,14 +4,13 @@ import configparser
 import HtmlTestRunner
 import sys
 import os
-
 # Thêm đường dẫn đến thư mục gốc vào sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from pages.login_page import LoginPage
 from pages.admin_page import AdminPage
 from utils.browser_setup import BrowserSetup
-
-
+#khanh login
+#test
 class LoginTest(unittest.TestCase):
 
     def setUp(self):
@@ -30,7 +29,7 @@ class LoginTest(unittest.TestCase):
         login_page = LoginPage(self.driver)
 
         login_page.open_login_form()
-        # Nhập thông tin đăng nhập
+        # Nhập thông tin đăng nhập bằng admin
         login_page.enter_username("superadmin@gmail.com")
         login_page.enter_password("admin123")
         login_page.click_login()
@@ -42,7 +41,7 @@ class LoginTest(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-
+#  test nhập thông tin bằng 1 tài khoản không tồn tại
 if __name__ == "__main__":
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
 
