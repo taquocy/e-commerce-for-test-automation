@@ -24,7 +24,7 @@ class RegistrationTest(unittest.TestCase):
 
         # Khởi tạo trình duyệt
         self.driver = BrowserSetup.get_driver()
-        self.driver.get(self.registration_url)  # Sử dụng URL từ file config
+        self.driver.get(self.registration_url)  
 
     def generate_random_email(self):
         """Tạo email ngẫu nhiên với định dạng cơ bản."""
@@ -60,7 +60,20 @@ class RegistrationTest(unittest.TestCase):
         error_message = registration_page.get_error_message()
         # email_error_message = registration_page.get_email_in_use_error_message()
         # self.assertEqual(email_error_message, "This e-mail already using.")
-        self.assertEqual(error_message, "This e-mail already using.")  # Thay đổi thông báo lỗi nếu cần
+        self.assertEqual(error_message, "This e-mail already using.")  
+
+    
+
+    def test_registration_with_fail_email(self):
+        registration_page = RegistrationPage(self.driver)
+        registration_page.click_sign_up()
+
+        registration_page.enter_email("asdasd@a")  
+        registration_page.enter_password("1234567")
+        registration_page.enter_passwordConfirm("1234567")
+        registration_page.click_register()
+        error_message = registration_page.get_error_message()
+        self.assertEqual(error_message, '"email" must be a valid email')
 
     # def test_registration_with_mismatched_passwords(self):
     #     registration_page = RegistrationPage(self.driver)
