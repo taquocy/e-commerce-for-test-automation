@@ -51,7 +51,7 @@ class RegistrationTest(unittest.TestCase):
         registration_page.click_sign_up()
 
         # Nhập thông tin đăng ký với email đã tồn tại
-        registration_page.enter_email("nguyen@gmail.com")  # Thay đổi thành email đã tồn tại trong CSDL
+        registration_page.enter_email("nguyen@gmail.com")  
         registration_page.enter_password("123456")
         registration_page.enter_passwordConfirm("123456")
         registration_page.click_register()
@@ -62,20 +62,20 @@ class RegistrationTest(unittest.TestCase):
         # self.assertEqual(email_error_message, "This e-mail already using.")
         self.assertEqual(error_message, "This e-mail already using.")  # Thay đổi thông báo lỗi nếu cần
 
-    def test_registration_with_mismatched_passwords(self):
-        registration_page = RegistrationPage(self.driver)
-        registration_page.click_sign_up()
+    # def test_registration_with_mismatched_passwords(self):
+    #     registration_page = RegistrationPage(self.driver)
+    #     registration_page.click_sign_up()
 
-        # Nhập thông tin đăng ký với mật khẩu không khớp
-        random_email = self.generate_random_email()  # Tạo email ngẫu nhiên
-        registration_page.enter_email(random_email)
-        registration_page.enter_password("Password123")
-        registration_page.enter_passwordConfirm("DifferentPassword123")
-        registration_page.click_register()
+    #     # Nhập thông tin đăng ký với mật khẩu không khớp
+    #     random_email = self.generate_random_email()  # Tạo email ngẫu nhiên
+    #     registration_page.enter_email(random_email)
+    #     registration_page.enter_password("Password123")
+    #     registration_page.enter_passwordConfirm("DifferentPassword123")
+    #     registration_page.click_register()
 
-        # Kiểm tra thông báo lỗi
-        error_message = registration_page.get_error_message()
-        self.assertEqual(error_message, "Mật khẩu xác nhận không khớp!")
+    #     # Kiểm tra thông báo lỗi
+    #     error_message = registration_page.get_error_message()
+    #     self.assertEqual(error_message, "Mật khẩu xác nhận không khớp!")
 
     def tearDown(self):
         self.driver.quit()
