@@ -17,7 +17,6 @@ class HomePage:
     def click_login(self):
         
         self.driver.find_element(*self.login_button).click()
-
     def click_register(self):
         
         self.driver.find_element(*self.register_button).click()
