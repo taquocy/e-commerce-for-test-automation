@@ -18,11 +18,12 @@ class HomePage:
         
         self.driver.find_element(*self.login_button).click()
         
-        
-
+    
     def click_register(self):
         
         self.driver.find_element(*self.register_button).click()
+
+
 
     def click_add_to_basket(self):
         self.driver.find_element(*self.add_to_basket_button).click()
