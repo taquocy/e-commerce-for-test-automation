@@ -24,7 +24,7 @@ class EditProductPage():
 
 
         # self.photos_label = (By.XPATH, "//label[@for='field-:r5:']")  # Label cho Photos
-        # self.add_photo_button = (By.XPATH, "//button[text()='Add a Photo']")  # Nút "Add a Photo"
+        self.add_photo_button = (By.XPATH, "//button[text()='Add a Photo']")  # Nút "Add a Photo"
         self.photo_input = (By.XPATH, "//input[@name='photos.0']")
 
         self.add_product_button = (By.XPATH, "//button[@type='submit']")  # Nút "Add Product"
@@ -57,8 +57,9 @@ class EditProductPage():
 
     def enter_image_url(self, image):
         """Nhấn nút 'Add a Photo'."""
-        image_element.send_keys(Keys.CONTROL + "a")
-        image_element.send_keys(image)
+        self.driver.find_element(*self.photo_input).click()
+        self.driver.find_element(*self.photo_input).send_keys(Keys.CONTROL + "a")
+        self.driver.find_element(*self.photo_input).send_keys(image)
 
     def click_add_product(self):
         """Nhấn nút 'Add Product' để gửi form."""

@@ -42,16 +42,15 @@ class EditProductPage(unittest.TestCase):
         admin_page.open_edit_or_delete_product_page()
         create_edit_product_page= admin_page.open_edit_product_page()
         create_edit_product_page.enter_title("")
-        create_edit_product_page.enter_title("product is testting MinhHauDev")
+        create_edit_product_page.enter_title("Chi dân")
         create_edit_product_page.enter_description("")
-        create_edit_product_page.enter_description("it is performed by Minh Hau Dev")
+        create_edit_product_page.enter_description("1234 Ngay")
         create_edit_product_page.enter_price("")
         create_edit_product_page.enter_price("3000")
         create_edit_product_page.click_add_photo()
-        create_edit_product_page.enter_image_url("https://images/for-me")
+        create_edit_product_page.enter_image_url("https://images.unsplash.com/photo-1726839662758-e3b5da59b0fb?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
         create_edit_product_page.click_add_product()
-        # Kiểm tra xem thông báo thành công có xuất hiện hay không
-        # assert create_new_product_page.is_success_message_appeared(), "Success message did not appear"
+        
 
     def tearDown(self):
         self.driver.quit()
