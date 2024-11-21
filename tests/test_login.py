@@ -38,6 +38,16 @@ class LoginTest(unittest.TestCase):
         admin_page = AdminPage(self.driver)
         admin_page.check_admin_page_display()
 
+    def test_valid_login_with_user_account(self):
+        login_page = LoginPage(self.driver)
+
+        login_page.open_login_form()
+        # Nhập thông tin đăng nhập
+        login_page.enter_username("hongphat@gmail.com")
+        login_page.enter_password("12345")
+        login_page.click_login()
+
+        login_page.check_profile_page_display()
 
     def tearDown(self):
         self.driver.quit()

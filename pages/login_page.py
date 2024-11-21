@@ -24,3 +24,5 @@ class LoginPage:
     # Hàm để nhấn nút login
     def click_login(self):
         self.driver.find_element(*self.login_button).click()
+    def check_profile_page_display(self):
+            print("Profile button not found!")
