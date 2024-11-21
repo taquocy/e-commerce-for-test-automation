@@ -1,0 +1,11 @@
+.env
+env
+venv
+.venv
+resources
+reports
+pages/__pycache__
+tests/__pycache__
+utils
+utils/browser_setup.py
+config.ini
