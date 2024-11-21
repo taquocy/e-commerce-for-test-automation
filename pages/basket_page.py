@@ -6,8 +6,7 @@ class BasketPage:
         self.driver = driver
 
         self.remove_button = (By.XPATH, "//*[@id='content']/div//button")
-        self.basket_button = (
-            By.XPATH, "//*[@id='root']/nav/div[2]/a[@href='/basket']")
+        self.basket_button = (By.XPATH, "//a[@href='/basket']")
         self.item_image = (By.XPATH, "//*[@id='content']/div//a/img")
         self.total_price = (By.XPATH, "//p[contains(text(), 'Total:')]")
         
