@@ -13,7 +13,6 @@ class LoginPage:
         self.password_input = (By.NAME, "password")  # Tìm trường password
         self.login_button = (By.XPATH, "//button[@type='submit']")  # Nút submit
         self.title = "//h2[normalize-space(text())='%s']"
-
     def open_login_form(self):
         self.driver.find_element(*self.menu_login).click()
 
