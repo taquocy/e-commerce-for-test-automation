@@ -12,11 +12,13 @@ class BrowserSetup:
         # Lấy path driver từ phần cấu hình webdriver
         driver_path = config['webdriver']['driver_path']
 
-        # Tạo instance của Service với path đến ChromeDriver
-        service = Service(driver_path)
-
-        # Khởi tạo WebDriver (Chrome ở đây) với Service
+        # Tạo instance của WebDriver (Chrome ở đây)          
+        service = Service(driver_path)  # Create a Service object with the path to chromedriver
         driver = webdriver.Chrome(service=service)
+
+        # Tạo instance của WebDriver (Chrome ở đây)
+
         driver.implicitly_wait(26)
         driver.maximize_window()
         return driver
+
