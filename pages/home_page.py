@@ -4,7 +4,6 @@ class HomePage:
     def __init__(self, driver):
         self.driver = driver
 
-
         self.login_button = (By.XPATH, "//button[contains(text(), 'Login')]")
         self.register_button = (By.XPATH, "//button[contains(text(), 'Register')]")
         self.product_card = (By.XPATH, "//img[@alt='Product']")  
