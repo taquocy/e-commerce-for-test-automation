@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2024-12-11 21:37:17</p>
+                <p class='attribute'><strong>Duration: </strong>1 ms</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 1, Pass: 0, Error: 1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>test_basket.AddToBasketTest</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_add_product_to_basket</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\driver_finder.py", line 64, in _binary_paths
+    raise ValueError(f"The path is not a valid file: {path}")
+ValueError: The path is not a valid file: D:/tester/chromedriver-win64/chromedriver.exe
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ACER\Desktop\test\e-commerce-for-test-automation\tests\test_basket.py", line 26, in setUp
+    self.driver = BrowserSetup.get_driver()
+  File "C:\Users\ACER\Desktop\test\e-commerce-for-test-automation\utils\browser_setup.py", line 18, in get_driver
+    driver = webdriver.Chrome(service=service)
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 50, in __init__
+    if finder.get_browser_path():
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\driver_finder.py", line 47, in get_browser_path
+    return self._binary_paths()["browser_path"]
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\driver_finder.py", line 78, in _binary_paths
+    raise NoSuchDriverException(msg) from err
+selenium.common.exceptions.NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 0, Error: 1 -- Duration: 1 ms
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html
