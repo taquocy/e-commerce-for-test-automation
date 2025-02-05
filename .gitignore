@@ -3,3 +3,5 @@ config.ini
 
 # Bỏ qua toàn bộ thư mục resources
 resources/
+
+reports/

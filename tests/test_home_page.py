@@ -42,8 +42,14 @@ class HomePageTest(unittest.TestCase):
 
     def test_load_more_functionality(self):
         """Kiểm tra chức năng của nút 'Load More'."""
-        self.home_page.click_load_more()
-        self.assertTrue(self.home_page.wait_for_load_more_results(), "Nội dung mới không được tải sau khi nhấn 'Load More'.")
+        self.assertTrue(self.home_page.test_load_more(), "Nội dung mới không được tải sau khi nhấn 'Load More'.")
+
+    def test_add_and_remove_basket_button(self):
+        """Kiểm tra chức năng của nút 'Add to Basket, Remove from Basket'."""
+        self.assertTrue(self.home_page.test_toggle_basket_button(), "Nút 'add_basket' và 'remove_basket' không hoạt động")
+
+    def test_navigate(self):
+        self.assertTrue(self.home_page.test_navigate_to_item_detail(), "Không chuyển trang khi nhấn vào item")
 
     def tearDown(self):
         self.driver.quit()
