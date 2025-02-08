@@ -38,7 +38,44 @@ class LoginTest(unittest.TestCase):
         admin_page = AdminPage(self.driver)
         admin_page.check_admin_page_display()
 
+    def test_valid_login_with_user_account(self):
+        login_page = LoginPage(self.driver)
+        login_page.open_login_form()
+        # Nhập thông tin đăng nhập
+        login_page.enter_username("user@gmail.com")
+        login_page.enter_password("Y649394$y")
+        login_page.click_login()
+        assert True
 
+        # admin_page = AdminPage(self.driver)
+        # admin_page.check_admin_page_display()
+
+    def test_user_cannot_login_with_invalid_password(self):
+        #1.Navigate to URL: https: // e - commerce -for -testing.onrender.com /
+        # 2.Go to Login page
+        login_page = LoginPage(self.driver)
+        login_page.open_login_form()
+        # 3. Enter info to the fields:
+            # - Email:ngominh011@gmail.com
+            # - Password:1235
+        login_page.enter_username("ngominh011@gmail.com")
+        login_page.enter_password("1235")
+
+        # 4.Click Login button
+        login_page.click_login()
+        # Assert....
+
+    def test_login_with_unregistered_username(self):
+        # 1.Open the login page.
+        login_page = LoginPage(self.driver)
+        login_page.open_login_form()
+        # 2.Enter unregistered username and any password.
+        login_page.enter_username("noname@gmail.com")
+        login_page.enter_password("12345")
+        # 3.Click on "Login".
+        login_page.click_login()
+        # 4. Login fails.Error message "The email address was not found."
+        login_page.check_email_error()
     def tearDown(self):
         self.driver.quit()
 
