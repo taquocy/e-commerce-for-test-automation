@@ -14,6 +14,9 @@ class LoginPage:
         self.username_input = (By.NAME, "email")  # Tìm trường username
         self.password_input = (By.NAME, "password")  # Tìm trường password
         self.login_button = (By.XPATH, "//button[@type='submit']")  # Nút submit
+        self.username_input = (By.XPATH, "//input[@name='email']")  # Tìm trường username
+        self.password_input = (By.XPATH, "//input[@name='password']")  # Tìm trường password
+        self.menu_login = (By.XPATH, "//a[@href='/signin']/button")
         self.email_not_found_msg = (By.XPATH,"//*[@id='content']/div/div/div/div[2]/div")
 
     def open_login_form(self):
