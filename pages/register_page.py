@@ -1,26 +1,35 @@
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class RegisterPage:
     def __init__(self, driver):
         self.driver = driver
-        # Xác định các phần tử trên trang login
-        self.menu_login =  (By.XPATH, "//a[@href='/signin']/button")
-        self.email_input = (By.XPATH, "//input[@name='email']")  # Tìm trường username
-        self.password_input = (By.XPATH, "//input[@name='password']")  # Tìm trường password
-        self.password_confirm_input = (By.XPATH, "//input[@name='passwordConfirm']")  # Tìm trường password
-        self.sign_up_button = (By.XPATH, "//button[text()='Sign Up']")  # Nút submit
 
-    def open_login_form(self):
-        self.driver.find_element(*self.menu_login).click()
-    # Hàm để nhập tên đăng nhập
-    def enter_username(self, username):
-        self.driver.find_element(*self.username_input).send_keys(username)
+        # Xác định các phần tử trên trang đăng ký
+        self.menu_register = (By.XPATH, "//a[@href='/signup']/button")  # Nút mở form đăng ký
+        self.email_field = (By.XPATH, "//input[@name='email']")  # Trường nhập email
+        self.password_field = (By.XPATH, "//input[@name='password']")  # Trường nhập password
+        self.confirm_password_field = (By.XPATH, "//input[@name='confirm_password']")  # Nhập lại password
+        self.register_button = (By.XPATH, "//button[@type='submit']")  # Nút đăng ký
 
-    # Hàm để nhập mật khẩu
+    def open_register_form(self):
+        """Mở form đăng ký"""
+        self.driver.find_element(*self.menu_register).click()
+
+    def enter_email(self, email):
+        """Nhập email"""
+        self.driver.find_element(*self.email_field).send_keys(email)
+
     def enter_password(self, password):
-        self.driver.find_element(*self.password_input).send_keys(password)
+        """Nhập mật khẩu"""
+        self.driver.find_element(*self.password_field).send_keys(password)
 
-    # Hàm để nhấn nút login
-    def click_login(self):
-        self.driver.find_element(*self.login_button).click()
+    def enter_confirm_password(self, confirm_password):
+        """Nhập lại mật khẩu"""
+        self.driver.find_element(*self.confirm_password_field).send_keys(confirm_password)
+
+    def click_register(self):
+        """Nhấn nút đăng ký"""
+        self.driver.find_element(*self.register_button).click()
