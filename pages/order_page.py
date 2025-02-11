@@ -14,7 +14,7 @@ class OrderProductPage:
         )
         self.buyNow_button = (By.CSS_SELECTOR, ".chakra-button.css-1qs1wp9")
         self.button_basket = (By.XPATH, "//a[@href='/basket']/button")
-        self.login_button = (By.XPATH, "//button[@type='submit']")  # Nút submit
+        self.login_button = (By.XPATH, "//button[@type='submit']")  
 
     def add_basket(self):
         self.driver.find_element(*self.addToBasket_button).click()
@@ -25,7 +25,6 @@ class OrderProductPage:
     def open_model_address(self):
         self.driver.find_element(*self.buyNow_button).click()
 
-        # Xác định các phần tử trên trang login
         self.title_label = (By.XPATH, "//label[@for='field-:rf:']")
         self.address_input = (
             By.XPATH,
