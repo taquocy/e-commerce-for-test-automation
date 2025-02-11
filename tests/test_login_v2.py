@@ -85,6 +85,43 @@ class LoginTest(unittest.TestCase):
         email_error = LoginPage(self.driver).get_email_error_message()
         self.assertEqual("Email phai co toi thieu 6 ky tu", email_error)
 
+    def test_login_with_whitespace_email(self):
+        """Test login with email containing leading and trailing whitespaces."""
+        self.login("  superadmin@gmail.com  ", "admin123")
+        error_message = LoginPage(self.driver).get_error_message()
+        self.assertIn("Invalid credentials", error_message)
+
+    def test_login_with_special_characters_in_password(self):
+        """Test login with special characters in the password."""
+        self.login("superadmin@gmail.com", "@dm!n#123$")
+        error_message = LoginPage(self.driver).get_error_message()
+        self.assertIn("Invalid credentials", error_message)
+
+    def test_login_with_case_sensitive_email(self):
+        """Test login with case-sensitive email."""
+        self.login("SuperAdmin@gmail.com", "admin123")
+        error_message = LoginPage(self.driver).get_error_message()
+        self.assertIn("Invalid credentials", error_message)
+
+    def test_login_with_sql_injection_attempt(self):
+        """Test login with SQL injection attempt in username."""
+        self.login("' OR 1=1; --", "admin123")
+        error_message = LoginPage(self.driver).get_error_message()
+        self.assertIn("Invalid credentials", error_message)
+
+    def test_login_with_password_containing_whitespace(self):
+        """Test login with password containing leading or trailing whitespace."""
+        self.login("superadmin@gmail.com", " admin123 ")
+        error_message = LoginPage(self.driver).get_error_message()
+        self.assertIn("Invalid credentials", error_message)
+
+    def test_login_with_maximum_password_length(self):
+        """Test login with maximum allowed password length."""
+        max_length_password = "a" * 64  # Assuming 64 characters as the max length
+        self.login("superadmin@gmail.com", max_length_password)
+        error_message = LoginPage(self.driver).get_error_message()
+        self.assertIn("Invalid credentials", error_message)
+
     @classmethod
     def tearDownClass(cls):
         """Quit the browser after all tests."""
