@@ -64,5 +64,3 @@ class CreateNewProductPage():
         except TimeoutException:
             print("Message 'Add product successfully' did not appear.")
             return False
-
-
