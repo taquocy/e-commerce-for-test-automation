@@ -40,7 +40,6 @@ class ProfileTest(unittest.TestCase):
     def test_update_profile_error_message_enter_capital_letters(self):
         admin_page = AdminPage(self.driver)
         update_profile_page = admin_page.open_profile_page()
-        update_profile_page = admin_page.open_profile_page()
         update_profile_page.enter_password("admin111@")
         update_profile_page.click_update_profile()
 
