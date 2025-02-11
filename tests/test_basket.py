@@ -7,12 +7,12 @@ import os
 
 # Thêm đường dẫn đến thư mục gốc vào sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from pages.home_page import HomePage
 from pages.login_page import LoginPage
-from pages.admin_page import AdminPage
+from pages.basket_page import BasketPage
 from utils.browser_setup import BrowserSetup
 
-
-class LoginTest(unittest.TestCase):
+class AddToBasketTest(unittest.TestCase):
 
     def setUp(self):
         # Đọc file config.ini
@@ -25,8 +25,6 @@ class LoginTest(unittest.TestCase):
         # Khởi tạo trình duyệt
         self.driver = BrowserSetup.get_driver()
         self.driver.get(self.login_url)  # Sử dụng URL từ file config
-
-    def test_valid_login_with_admin_account(self):
         login_page = LoginPage(self.driver)
 
         login_page.open_login_form()
@@ -35,9 +33,26 @@ class LoginTest(unittest.TestCase):
         login_page.enter_password("admin123")
         login_page.click_login()
 
-        admin_page = AdminPage(self.driver)
-        admin_page.check_admin_page_display()
+    def test_add_product_to_basket(self):
 
+        home_page = HomePage(self.driver)
+
+        # Thực hiện hành động "Add to Basket"
+        home_page.open_home()
+        home_page.click_add_to_basket()
+
+        basket_page = BasketPage(self.driver)
+        basket_page.open_basket()
+
+        print('Total price:', basket_page.get_total_price())
+        print('Item image:', basket_page.get_item_image_src())
+
+        basket_page.remove_item_from_basket()
+        print('Removed item successfully')
+        home_page.open_home()
+
+
+        # Kiểm tra xem sản phẩm đã được thêm vào giỏ hàng thành công
 
     def tearDown(self):
         self.driver.quit()
@@ -45,4 +60,3 @@ class LoginTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
-
