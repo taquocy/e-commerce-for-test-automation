@@ -1,0 +1,8 @@
+./reports
+./utils
+./README.md
+./config.ini
+./tests/__init__.py
+./tests/__pycache__
+./pages/__init__.py
+./pages/__pycache__
