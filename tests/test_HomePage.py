@@ -52,3 +52,4 @@ class HomePageTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
+
