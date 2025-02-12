@@ -5,16 +5,18 @@ from selenium.webdriver.chrome.service import Service
 class BrowserSetup:
     @staticmethod
     def get_driver():
-        # Load configuration file
+        # Đọc file config.ini
         config = configparser.ConfigParser()
-        config.read('path_to_your_config.ini')  # Path to your config file
+        config.read('config.ini')  # Đọc file config.ini từ thư mục gốc
 
-        # Get the driver path from the configuration
+        # Lấy path driver từ phần cấu hình webdriver
         driver_path = config['webdriver']['driver_path']
 
-        # Create a Service object with the driver path
-        service = Service(driver_path)
-
-        # Initialize the Chrome driver with the service
+        service = Service(driver_path)  # Create a Service object with the path to chromedriver
         driver = webdriver.Chrome(service=service)
+
+        # Tạo instance của WebDriver (Chrome ở đây)
+        # driver = webdriver.Chrome(executable_path=driver_path)
+        driver.implicitly_wait(26)
+        driver.maximize_window()
         return driver
