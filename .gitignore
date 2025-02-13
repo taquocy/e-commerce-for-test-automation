@@ -1,6 +1,4 @@
 reports/
-resources/
-utils/
 config.ini
 
 pages/__pycache__/
