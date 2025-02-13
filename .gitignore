@@ -1,0 +1,18 @@
+# Environment and virtual environments
+.env
+env*
+venv*
+.venv
+# Reports and generated resources
+reports
+resources
+# Compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+# Test and utility caches
+pages/__pycache__/
+tests/__pycache__/
+utils/__pycache__/
+# Configuration files
+config.ini
