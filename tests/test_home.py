@@ -37,7 +37,6 @@ class HomePageTest(unittest.TestCase):
         home_page = HomePage(self.driver)
         home_page.click_add_to_basket()
         
-        # Kiểm tra sản phẩm đã được thêm thành công (ví dụ kiểm tra thông báo hoặc số lượng)
         basket_count = home_page.get_basket_count()
         self.assertGreater(int(basket_count), 0, "Basket count did not increase")
 
@@ -46,7 +45,6 @@ class HomePageTest(unittest.TestCase):
         home_page = HomePage(self.driver)
         home_page.click_add_to_cart()
 
-        # Kiểm tra giỏ hàng có sản phẩm hay không
         cart_count = home_page.get_cart_count()
         self.assertGreater(int(cart_count), 0, "Cart count did not increase")
 
@@ -61,7 +59,38 @@ class HomePageTest(unittest.TestCase):
 
         home_page.click_register()
         self.assertIn("register", self.driver.current_url, "Register page not opened")
+    
+    def test_search_functionality(self):
+        """Kiểm tra chức năng tìm kiếm sản phẩm"""
+        home_page = HomePage(self.driver)
+        home_page.enter_search_query("laptop")
+        home_page.submit_search()
+        
+        search_results = home_page.get_search_results()
+        self.assertGreater(len(search_results), 0, "No search results found")
 
+    def test_product_filter(self):
+        """Kiểm tra chức năng lọc sản phẩm"""
+        home_page = HomePage(self.driver)
+        home_page.apply_filter("Price", "500-1000")
+        
+        filtered_products = home_page.get_filtered_products()
+        self.assertGreater(len(filtered_products), 0, "No products found after filtering")
+    
+    def test_product_navigation(self):
+        """Kiểm tra điều hướng đến trang chi tiết sản phẩm"""
+        home_page = HomePage(self.driver)
+        home_page.click_on_product()
+        
+        self.assertIn("product", self.driver.current_url, "Did not navigate to product details page")
+    
+    def test_featured_products_display(self):
+        """Kiểm tra hiển thị danh sách sản phẩm nổi bật"""
+        home_page = HomePage(self.driver)
+        featured_products = home_page.get_featured_products()
+        
+        self.assertGreater(len(featured_products), 0, "No featured products displayed")
+    
     @classmethod
     def tearDownClass(cls):
         """Đóng trình duyệt sau khi chạy tất cả test case"""
