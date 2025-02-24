@@ -12,7 +12,7 @@ class ProductDetailtPage:
         self.login_button = (By.XPATH, "//a[@href='/signin']/button[@class='chakra-button']")  # Nút đăng nhập
         self.register_button = (By.XPATH, "//a[@href='/signup']/button[@class='chakra-button']" ) # Nút đăng ký
         self.add_to_bag_button = (By.XPATH, "//div[@class='chakra-card__footer']/button" ) # Nút thêm giỏ hàng
-
+        self.datetime_product = (By.XPATH, '//*[@id="content"]/div/div[1]/div/div[3]/div/a/div/div/p[1]')
     # Hàm để nhấn vào nút đăng nhập
     def click_login_button(self):
         self.driver.find_element(*self.login_button).click()
