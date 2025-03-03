@@ -27,10 +27,10 @@ class WebTablePage(unittest.TestCase):
         self.driver.get("https://demoqa.com/selectable")  # Sử dụng URL từ file config
 
     def test_selectable(self):
-
+        time.sleep(5)
+        
         click_list = self.driver.find_element(By.XPATH,"//*[@id='demo-tab-list']")
         self.driver.execute_script("arguments[0].scrollIntoView(true);", click_list)
-        time.sleep(5)
         click_list.click()
 
         list_1 = self.driver.find_element(By.XPATH,"/html/body/div[2]/div/div/div/div[2]/div[2]/div/div[1]/ul/li[1]")
