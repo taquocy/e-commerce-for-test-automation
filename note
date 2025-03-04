@@ -1,0 +1,14 @@
+1) locate element
+css-selecter
+#id = #sign-in
+.class .c1
+.class1.class2
+.class1 .class2
+
+
+
+1) git checkout -b ténV_Xpath
+2) code
+3) git commit -m
+4) git push -f origin
+5) Mở pull request
