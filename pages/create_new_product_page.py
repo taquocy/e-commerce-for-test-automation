@@ -9,7 +9,7 @@ class CreateNewProductPage():
         self.driver = driver
 
         # Xác định các phần tử trên trang login
-        self.title_label = (By.XPATH, "//label[@for='field-:r2:']")  # Label cho Title
+        self.title_label = (By.XPATH, "//label[@for='field-:r2:']")  # Label cho Title 
         self.title_input = (By.NAME, "title")  # Trường input cho Title
         self.title_error = (By.XPATH, "//p[contains(text(), 'title is a required field')]")  # Thông báo lỗi cho Title
 
