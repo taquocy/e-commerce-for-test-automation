@@ -26,6 +26,10 @@ class NhiTest(unittest.TestCase):
           self.driver = BrowserSetup.get_driver()
           self.driver.get("https://demoqa.com/webtables")  # Sử dụng URL từ file config
     def test_add_new_data_succesfully(self):
+        #Summary: Verify that user can add new data successfully
+        #Step1 : Click on Add button
+        btnAdd = self.driver.find_element(By.XPATH,"//button[@id='addNewRecordButton']")
+        btnAdd.click()
         #Step1: Enter FullName = 'Le Thi Ngoc Nhi'
         txtFullName= self.driver.find_element(By.XPATH,"//input[@id=\"fullName\"]")
         txtFullName.send_keys("Le Thi Ngoc Nhi")
