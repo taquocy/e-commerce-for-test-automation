@@ -34,25 +34,32 @@ class NhiTest(unittest.TestCase):
         # Nhập dữ liệu vào form
         txtFirstName = self.wait.until(EC.visibility_of_element_located((By.ID, "firstName")))
         txtFirstName.send_keys("Le Thi Ngoc")
+        time.sleep(2)
 
         txtLastName = self.driver.find_element(By.ID, "lastName")
         txtLastName.send_keys("Nhi")
+        time.sleep(2)
 
         txtEmail = self.driver.find_element(By.ID, "userEmail")
         txtEmail.send_keys("nhi@donga.edu.vn")
+        time.sleep(2)
 
         txtAge = self.driver.find_element(By.ID, "age")
         txtAge.send_keys("25")
+        time.sleep(2)
 
         txtSalary = self.driver.find_element(By.ID, "salary")
         txtSalary.send_keys("5000")
+        time.sleep(2)
 
         txtDepartment = self.driver.find_element(By.ID, "department")
         txtDepartment.send_keys("IT")
+        time.sleep(2)
 
         # Click nút Submit
         btnSubmit = self.driver.find_element(By.ID, "submit")
         btnSubmit.click()
+        time.sleep(2)
 
         # Kiểm tra dữ liệu đã nhập thành công
         table = self.driver.find_element(By.CLASS_NAME, "rt-table")
