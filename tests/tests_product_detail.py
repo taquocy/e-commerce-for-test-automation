@@ -4,31 +4,31 @@ import HtmlTestRunner
 import sys
 import os
 
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 # Thêm đường dẫn đến thư mục gốc vào sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from utils.browser_setup import BrowserSetup
-from pages.product_detail_page import ProductDetailtPage
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from pages.product_detail_page import ProductDetailPage
 
 
 class ProductDetailTest(unittest.TestCase):
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         # Đọc file config.ini
         config = configparser.ConfigParser()
         config.read('config.ini')
-
-        # Lấy URL trang chi tiết sản phẩm từ file config
-        self.product_url = config['app']['product_url']
+        cls.product_url = config['app'].get('product_url', '')
 
         # Khởi tạo trình duyệt
-        self.driver = BrowserSetup.get_driver()
-        self.driver.get(self.product_url)  # Điều hướng đến trang sản phẩm
+        cls.driver = BrowserSetup.get_driver()
+        cls.driver.get(cls.product_url)  # Điều hướng đến trang sản phẩm
 
         # Khởi tạo trang sản phẩm
-        self.product_page = ProductDetailtPage(self.driver)
+        cls.product_page = ProductDetailPage(cls.driver)
 
     def test_product_image_exists(self):
         """ Kiểm tra hình ảnh sản phẩm có tồn tại """
@@ -63,8 +63,9 @@ class ProductDetailTest(unittest.TestCase):
         self.assertTrue(element.is_displayed(), "❌ Nút Thêm vào giỏ hàng không hiển thị!")
         print("✅ Nút Thêm vào giỏ hàng hiển thị đúng!")
 
-    def tearDown(self):
-        self.driver.quit()
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
 
 
 if __name__ == "__main__":
