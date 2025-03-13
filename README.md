@@ -18,6 +18,11 @@ python -m unittest tests.test_admin_new_product
 
 python tests/run_tests.py
 
+python -m unittest tests.test_table_form_elements 
+
+
+python -m unittest tests.demoqa_practice 
+
 
 
 ### FILE FOR WINDOW
