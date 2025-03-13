@@ -9,5 +9,3 @@ class RegisterPage:
         self.password = (By.XPATH, "//input[@name='password']")
         self.confirm_password = (By.XPATH, "//input[@name='confirmPassword']")
         self.register_button = (By.XPATH, "//button[@type='submit']")
-
-
