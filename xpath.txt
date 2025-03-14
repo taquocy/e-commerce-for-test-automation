@@ -1,0 +1,8 @@
+//h2[@class='chakra-heading css-1dklj6k' and text()='Sign In']
+//label[@id='field-:r0:-label' and @for='field-:r0:' and @class='chakra-form__label css-g6pte' and text()='E-mail']
+//div[@role='group' and @class='chakra-form-control css-1kxonj9']//input[@name='email' and @class='chakra-input css-1cjy4zv']
+//label[@id='field-:r1:-label' and @for='field-:r1:' and @class='chakra-form__label css-g6pte' and text()='Password']
+//input[@name='password' and @type='password' and @id='field-:r1:' and @class='chakra-input css-10dip6r']
+//svg[@stroke='currentColor' and @fill='currentColor' and @stroke-width='0' and @viewBox='0 0 576 512' and @xmlns='http://www.w3.org/2000/svg']
+//a[@class='chakra-link css-c6nly4' and @href='/forgot-password' and text()='Quên mật khẩu?']
+//button[@type='submit' and @class='chakra-button css-1qqymvj' and text()='Sign In']
