@@ -32,7 +32,7 @@ try:
     output_email = driver.find_element(By.XPATH, "//p[@id='email']").text
 
     assert "Le duy" in output_name, "Tên không đúng!"
-    assert "duy@gmail.com" in output_email, "Email không đúng!"
+    assert "duy@gmail.com" in output_email, "Email Không đúng!"
     print("✅ Test Passed - Dữ liệu hiển thị chính xác!")
 
 except Exception as e:
