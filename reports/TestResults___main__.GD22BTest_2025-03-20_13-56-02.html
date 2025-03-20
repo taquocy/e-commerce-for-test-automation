@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2025-03-20 13:56:02</p>
+                <p class='attribute'><strong>Duration: </strong>103.19 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 1, Pass: 0, Error: 1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>__main__.GD22BTest</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_add_new_data_succesfully</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00007FF6540C6F15+28773]
+	(No symbol) [0x00007FF654032600]
+	(No symbol) [0x00007FF653EC8FAA]
+	(No symbol) [0x00007FF653F1F286]
+	(No symbol) [0x00007FF653F1F4BC]
+	(No symbol) [0x00007FF653F72A27]
+	(No symbol) [0x00007FF653F4728F]
+	(No symbol) [0x00007FF653F6F6F3]
+	(No symbol) [0x00007FF653F47023]
+	(No symbol) [0x00007FF653F0FF5E]
+	(No symbol) [0x00007FF653F111E3]
+	GetHandleVerifier [0x00007FF65441425D+3490733]
+	GetHandleVerifier [0x00007FF65442BA43+3586963]
+	GetHandleVerifier [0x00007FF65442147D+3544525]
+	GetHandleVerifier [0x00007FF65418C9DA+838442]
+	(No symbol) [0x00007FF65403D04F]
+	(No symbol) [0x00007FF654039614]
+	(No symbol) [0x00007FF6540397B6]
+	(No symbol) [0x00007FF654028CE9]
+	BaseThreadInitThunk [0x00007FFA7203259D+29]
+	RtlUserThreadStart [0x00007FFA7402AF38+40]
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "c:\Users\ACER\ktpm2\e-commerce-for-test-automation\pages\test.py", line 76, in test_add_new_data_succesfully
+    btnRegis = WebDriverWait(self.driver, 10).until(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 146, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00007FF6540C6F15+28773]
+	(No symbol) [0x00007FF654032600]
+	(No symbol) [0x00007FF653EC8FAA]
+	(No symbol) [0x00007FF653F1F286]
+	(No symbol) [0x00007FF653F1F4BC]
+	(No symbol) [0x00007FF653F72A27]
+	(No symbol) [0x00007FF653F4728F]
+	(No symbol) [0x00007FF653F6F6F3]
+	(No symbol) [0x00007FF653F47023]
+	(No symbol) [0x00007FF653F0FF5E]
+	(No symbol) [0x00007FF653F111E3]
+	GetHandleVerifier [0x00007FF65441425D+3490733]
+	GetHandleVerifier [0x00007FF65442BA43+3586963]
+	GetHandleVerifier [0x00007FF65442147D+3544525]
+	GetHandleVerifier [0x00007FF65418C9DA+838442]
+	(No symbol) [0x00007FF65403D04F]
+	(No symbol) [0x00007FF654039614]
+	(No symbol) [0x00007FF6540397B6]
+	(No symbol) [0x00007FF654028CE9]
+	BaseThreadInitThunk [0x00007FFA7203259D+29]
+	RtlUserThreadStart [0x00007FFA7402AF38+40]
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 0, Error: 1 -- Duration: 103.19 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html

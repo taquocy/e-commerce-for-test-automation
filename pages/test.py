@@ -1,5 +1,12 @@
+# Test register á
 import unittest
 import configparser
+from selenium.webdriver.common.action_chains import ActionChains
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 import HtmlTestRunner
 import sys
@@ -27,55 +34,50 @@ class GD22BTest(unittest.TestCase):
 
         # Khởi tạo trình duyệt
         self.driver = BrowserSetup.get_driver()
-        self.driver.get("https://demoqa.com/webtables")  # Sử dụng URL từ file config
+        self.driver.get("https://demoqa.com/login")  # Sử dụng URL từ file config
 
     def test_add_new_data_succesfully(self):
-       #Summary: Verify that user can add new data successfully
-       #Step1 : Click on  button
-       btnEdit = self.driver.find_element(By.XPATH,"//button[@id='editRecordButton']")
-       btnEdit.click()
-       time.sleep(3)
+       #Summary: Verify that the user can add new user accounts successfully
+       #Step1 : Click on New User button
+       btnUser = self.driver.find_element(By.XPATH,"//button[@id='newUser']")
+       btnUser.click()
+       time.sleep(1)
 
-       #Step2: Enter FirstName = 'Phan'
-       txtFirstName= self.driver.find_element(By.XPATH,"//input[@id=\"Firstname\"]")
-       txtFirstName.send_keys("Phan")
-       time.sleep(3)
+       #Step2: Enter FirstName = 'Khue'
+       txtFirstName= self.driver.find_element(By.XPATH,"//input[@id='firstname']")
+       txtFirstName.send_keys("Khue")
+       time.sleep(1)
 
-       #Step3: Enter LastName = 'Khue'
-       txtLastName= self.driver.find_element(By.XPATH,"//input[@id=\"Lastname\"]")
-       txtLastName.send_keys("Khue")
-       time.sleep(3)
+       #Step3: Enter LastName = 'Phan'
+       txtLastName= self.driver.find_element(By.XPATH,"//input[@id='lastname']")
+       txtLastName.send_keys("Phan")
+       time.sleep(1)
 
-       #Step4: Enter Email = 'khue99234@donga.edu.vn'
-       txtEmail=self.driver.find_element(By.XPATH,"//input[@id=\"userEmail\"]")
-       txtEmail.send_keys("khue99234@donga.edu.vn")
-       time.sleep(3)
+       #Step4: Enter UserName = 'khue2211'
+       txtUserName=self.driver.find_element(By.XPATH,"//input[@id='userName']")
+       txtUserName.send_keys("khue2211")
+       time.sleep(1)
 
-       #Step5: Enter Age = '21'
-       txtAge=self.driver.find_element(By.XPATH,"//input[@id=\"age\"]")
-       txtAge.send_keys("21")
-       time.sleep(3)
+       #Step5: Enter PassWord = 'khue221104'
+       txtPass=self.driver.find_element(By.XPATH,"//input[@id='password']")
+       txtPass.send_keys("khue221104")
+       time.sleep(1)
 
+       #Step6: Click on recaptcha
+       iframe = self.driver.find_element(By.XPATH, "//iframe[contains(@src, 'recaptcha')]")
+       self.driver.switch_to.frame(iframe)
+       recaptcha_box = self.driver.find_element(By.ID, "recaptcha-anchor")
+       ActionChains(self.driver).move_to_element(recaptcha_box).click().perform() 
+       time.sleep(5)
 
-       #Step6: Enter Salary = '200000000'
-       txtSalary=self.driver.find_element(By.XPATH,"//input[@id=\"salary\"]")
-       txtSalary.send_keys("200000000")
-       time.sleep(3)
+       self.driver.switch_to.default_content()
 
-       #Step7: Enter Department = 'Graphic Design'
-       txtDepartment=self.driver.find_element(By.XPATH,"//input[@id=\"department\"]")
-       txtDepartment.send_keys("Graphic Design")
-       time.sleep(3)
-
-       #Step8: Click on Submit button
-       btnSubmit=self.driver.find_element(By.XPATH,"//button[@id=\"submit\"]")
-       btnSubmit.click()
-       time.sleep(3)
-
-       #Step9: Verify that new data is added successfully
-       table = self.driver.find_element(By.XPATH,"//div[@class=\"rt-table\"]")
-       assert "khue99234@donga.edu.vn" in table.text
-       assert "Graphic Design" in table.text
+       #Step7: Click on Register button
+       btnRegis = WebDriverWait(self.driver, 10).until(
+       EC.element_to_be_clickable((By.XPATH, "//button[@id='register']"))
+       )
+       btnRegis.click()
+       time.sleep(2)
 
     def tearDown(self):
         self.driver.quit()
