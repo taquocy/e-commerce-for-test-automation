@@ -32,7 +32,7 @@ def scrape_laptops():
                 price = laptop.find_element(By.CSS_SELECTOR, ".product__price--show").text.strip()
                 print(f"{name} : {price}")
                 
-                insert_laptop(name, price)
+                insert_laptop();
                 
             except Exception as e:
                 print("Lỗi khi lấy dữ liệu sản phẩm:", e)
