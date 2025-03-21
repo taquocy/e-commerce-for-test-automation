@@ -21,7 +21,7 @@ def login_failed_test(username, password):
     time.sleep(3)
 
     # Kiểm tra thông báo lỗi
-    if username == "Khanh":
+    if username == "Thuy":
         print("Thông báo lỗi: ")
     else:
         print("Không tìm thấy thông báo lỗi!")
@@ -30,7 +30,6 @@ def login_failed_test(username, password):
     browser.quit()
 
 # Test với thông tin đăng nhập sai (có thông báo lỗi)
-login_failed_test("Khanh", "Khanh20502")
+login_failed_test("Thuy", "Thuy231205")
 
-# Test với thông tin đăng nhập sai (không có thông báo lỗi)
-login_failed_test("Hoang", "Hoang1426")
+

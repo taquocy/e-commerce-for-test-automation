@@ -20,7 +20,7 @@ def login(username, password):
     time.sleep(3)
 
     # Kiểm tra đăng nhập thành công nếu username là "Khanh"
-    if username == "Khanh":
+    if username == "Thuy":
         print("Đăng nhập thành công!")
     else:
         print("Đăng nhập thất bại!")
@@ -29,7 +29,7 @@ def login(username, password):
     browser.quit()
 
 # Test đăng nhập với user "Khanh" (thành công)
-login("Khanh", "Khanhtest2005")
+login("Thuy", "Thuytran2312")
 
 # Test đăng nhập với user khác (thất bại)
 login("Nam", "nam123")
