@@ -74,5 +74,6 @@ def insert_laptop(name, price):
             cursor.close()
             conn.close()
 
+# chạy chương trình
 if __name__ == "__main__":
     scrape_laptops()
