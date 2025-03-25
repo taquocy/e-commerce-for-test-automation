@@ -5,7 +5,7 @@ class LoginPage:
     def __init__(self, driver):
         self.driver = driver
         # Xác định các phần tử trên trang login
-        self.menu_login =  (By.XPATH, "//a[@href='/signin']/button")
+        self.menu_login =  (By.XPATH, "//*[@id=""]/nav/div[2]/a[1]/button")
         self.username_input = (By.NAME, "email")  # Tìm trường username
         self.password_input = (By.NAME, "password")  # Tìm trường password
         self.login_button = (By.XPATH, "//button[@type='submit']")  # Nút submit
