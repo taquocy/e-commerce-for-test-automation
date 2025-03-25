@@ -23,3 +23,8 @@ class LoginPage:
     # Hàm để nhấn nút login
     def click_login(self):
         self.driver.find_element(*self.login_button).click()
+
+
+        #hem thay doo
+def guess():
+    print("chir laf them cho co")
