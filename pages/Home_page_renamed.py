@@ -9,6 +9,7 @@ class HomePage:
         self.driver = driver
 
         # Xác định các phần tử trên trang Home
+        self.click_button_Products = (By.XPATH, "//*[@id="root"]/nav/div[1]/ul/li/a")
         self.add_to_basket_button = (By.XPATH, "//button[text()='Add to Basket']")
         self.add_to_cart_button = (By.XPATH, "//button[text()='Add to Cart']")
         self.load_more_button = (By.XPATH, "//button[text()='Load More']")
