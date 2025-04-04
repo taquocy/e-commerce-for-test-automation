@@ -25,7 +25,8 @@ class CreateNewProductPage():
 
         self.add_product_button = (By.XPATH, "//button[@type='submit']")  # Nút "Add Product"
         self.message_create_product_successfully = (By.XPATH, "//span[text()='Add product successfully']")
-        
+
+        #Code Xpart
         self.new_products_button = (By.XPATH, "//*[@id='content']/div/div/div[4]/a/button")
 
 
