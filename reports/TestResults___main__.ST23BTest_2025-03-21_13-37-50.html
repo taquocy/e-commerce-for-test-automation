@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2025-03-21 13:37:50</p>
+                <p class='attribute'><strong>Duration: </strong>43.22 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 1, Pass: 0, Error: 1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>__main__.ST23BTest</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_can_add_valid_data_to_form</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">ElementClickInterceptedException: Message: element click intercepted: Element <input type="checkbox" id="hobbies-checkbox-1" class="custom-control-input" value="1"> is not clickable at point (741, 527). Other element would receive the click: <div class="subjects-auto-complete__option subjects-auto-complete__option--is-focused css-1n7v3ny-option" id="react-select-2-option-0" tabindex="-1">...</div>
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF704516F15+28773]
+	(No symbol) [0x00007FF704482600]
+	(No symbol) [0x00007FF704318FAA]
+	(No symbol) [0x00007FF704377109]
+	(No symbol) [0x00007FF704374AD2]
+	(No symbol) [0x00007FF704371B81]
+	(No symbol) [0x00007FF704370A91]
+	(No symbol) [0x00007FF704362284]
+	(No symbol) [0x00007FF70439724A]
+	(No symbol) [0x00007FF704361B36]
+	(No symbol) [0x00007FF704397460]
+	(No symbol) [0x00007FF7043BF6F3]
+	(No symbol) [0x00007FF704397023]
+	(No symbol) [0x00007FF70435FF5E]
+	(No symbol) [0x00007FF7043611E3]
+	GetHandleVerifier [0x00007FF70486425D+3490733]
+	GetHandleVerifier [0x00007FF70487BA43+3586963]
+	GetHandleVerifier [0x00007FF70487147D+3544525]
+	GetHandleVerifier [0x00007FF7045DC9DA+838442]
+	(No symbol) [0x00007FF70448D04F]
+	(No symbol) [0x00007FF704489614]
+	(No symbol) [0x00007FF7044897B6]
+	(No symbol) [0x00007FF704478CE9]
+	BaseThreadInitThunk [0x00007FF9F65EE8D7+23]
+	RtlUserThreadStart [0x00007FF9F689BF6C+44]
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "D:\KTPM2\Buoi1\e-commerce-for-test-automation\tests\testst23b.py", line 90, in test_can_add_valid_data_to_form
+    chkSports.click()
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 119, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 572, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <input type="checkbox" id="hobbies-checkbox-1" class="custom-control-input" value="1"> is not clickable at point (741, 527). Other element would receive the click: <div class="subjects-auto-complete__option subjects-auto-complete__option--is-focused css-1n7v3ny-option" id="react-select-2-option-0" tabindex="-1">...</div>
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF704516F15+28773]
+	(No symbol) [0x00007FF704482600]
+	(No symbol) [0x00007FF704318FAA]
+	(No symbol) [0x00007FF704377109]
+	(No symbol) [0x00007FF704374AD2]
+	(No symbol) [0x00007FF704371B81]
+	(No symbol) [0x00007FF704370A91]
+	(No symbol) [0x00007FF704362284]
+	(No symbol) [0x00007FF70439724A]
+	(No symbol) [0x00007FF704361B36]
+	(No symbol) [0x00007FF704397460]
+	(No symbol) [0x00007FF7043BF6F3]
+	(No symbol) [0x00007FF704397023]
+	(No symbol) [0x00007FF70435FF5E]
+	(No symbol) [0x00007FF7043611E3]
+	GetHandleVerifier [0x00007FF70486425D+3490733]
+	GetHandleVerifier [0x00007FF70487BA43+3586963]
+	GetHandleVerifier [0x00007FF70487147D+3544525]
+	GetHandleVerifier [0x00007FF7045DC9DA+838442]
+	(No symbol) [0x00007FF70448D04F]
+	(No symbol) [0x00007FF704489614]
+	(No symbol) [0x00007FF7044897B6]
+	(No symbol) [0x00007FF704478CE9]
+	BaseThreadInitThunk [0x00007FF9F65EE8D7+23]
+	RtlUserThreadStart [0x00007FF9F689BF6C+44]
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 0, Error: 1 -- Duration: 43.22 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html
