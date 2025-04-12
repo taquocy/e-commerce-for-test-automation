@@ -1,13 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 import time
 
-# Hàm kiểm tra đăng nhập
-def login(username, password):
+def login_success_test(username, password):
     browser = webdriver.Chrome()
     browser.get("https://demoqa.com/login")
-    time.sleep(2)  # Chờ sau khi mở trang
+    time.sleep(2)
 
     # Điền thông tin đăng nhập
     browser.find_element(By.ID, "userName").send_keys(username)
@@ -19,18 +17,14 @@ def login(username, password):
     browser.find_element(By.ID, "login").click()
     time.sleep(3)
 
-    # Kiểm tra đăng nhập thành công nếu username là "Khanh"
-    if username == "Khanh":
-        print("Đăng nhập thành công!")
-    else:
-        print("Đăng nhập thất bại!")
+    try:
+        # Kiểm tra xem có phần tử chứa tên người dùng sau khi đăng nhập không
+        user_logged_in = browser.find_element(By.ID, "userName-value")
+        print(f"✅ Đăng nhập thành công! Chào {user_logged_in.text}.")
+    except:
+        print("❌ Đăng nhập thất bại!")
 
-    # Đóng trình duyệt
     browser.quit()
 
-# Test đăng nhập với user "Khanh" (thành công)
-login("Khanh", "Khanhtest2005")
-
-# Test đăng nhập với user khác (thất bại)
-login("Nam", "nam123")
-
+# Test với tài khoản đúng
+login_success_test("an", "antestcode2005")

@@ -14,17 +14,17 @@ driver.maximize_window()
 # Step 1: Nhập First Name
 print("Step 1: Nhập First Name")
 first_name = driver.find_element(By.ID, "firstName")
-first_name.send_keys("Ngo")
+first_name.send_keys("Hoàng")
 
 # Step 2: Nhập Last Name
 print("Step 2: Nhập Last Name")
 last_name = driver.find_element(By.ID, "lastName")
-last_name.send_keys("Quoc Khanh")   
+last_name.send_keys("Trường Ân")   
 
 # Step 3: Nhập Email
 print("Step 3: Nhập Email")
 email = driver.find_element(By.ID, "userEmail")
-email.send_keys("khanh104087@donga.edu.vn.com")
+email.send_keys("an106248@donga.edu.vnvn")
 
 # Step 4: Chọn giới tính
 print("Step 4: Chọn giới tính")

@@ -1,16 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 import time
 
-# Hàm kiểm tra đăng nhập thất bại
 def login_failed_test(username, password):
-    # Khởi tạo WebDriver
     browser = webdriver.Chrome()
     browser.get("https://demoqa.com/login")
-    time.sleep(1)  # Chờ sau khi mở trang
+    time.sleep(2)
 
-    # Điền thông tin đăng nhập sai
+    # Điền thông tin đăng nhập
     browser.find_element(By.ID, "userName").send_keys(username)
     time.sleep(1)
     browser.find_element(By.ID, "password").send_keys(password)
@@ -20,17 +17,15 @@ def login_failed_test(username, password):
     browser.find_element(By.ID, "login").click()
     time.sleep(3)
 
-    # Kiểm tra thông báo lỗi
-    if username == "Khanh":
-        print("Thông báo lỗi: ")
-    else:
-        print("Không tìm thấy thông báo lỗi!")
+    try:
+        # Kiểm tra nếu có thông báo lỗi
+        error_message = browser.find_element(By.ID, "name")
+        print(f"✅ Đăng nhập thất bại đúng như mong đợi! Thông báo lỗi: {error_message.text}")
+    except:
+        print("❌ Không tìm thấy thông báo lỗi, có thể đã đăng nhập thành công!")
 
-    # Đóng trình duyệt
     browser.quit()
 
-# Test với thông tin đăng nhập sai (có thông báo lỗi)
-login_failed_test("Khanh", "Khanh20502")
-
-# Test với thông tin đăng nhập sai (không có thông báo lỗi)
-login_failed_test("Hoang", "Hoang1426")
+# Test với tài khoản sai
+login_failed_test("an", "saimatkhau")  # Sai mật khẩu
+login_failed_test("hoang", "hoang555") # Sai tài khoản
