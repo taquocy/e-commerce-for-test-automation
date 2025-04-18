@@ -38,6 +38,30 @@ class LoginTest(unittest.TestCase):
         admin_page = AdminPage(self.driver)
         admin_page.check_admin_page_display()
 
+    def test_invalid_login_attempt(self):
+        login_page = LoginPage(self.driver)
+
+        login_page.open_login_form()
+        # Nhập thông tin đăng nhập không hợp lệ
+        login_page.enter_username("invalid_user@gmail.com")
+        login_page.enter_password("invalid_password")
+        login_page.click_login()
+
+        # Kiểm tra thông báo lỗi
+        error_message = self.driver.find_element_by_xpath("//div[@class='error-message']")
+        self.assertTrue(error_message.is_displayed(), "Error message is not displayed for invalid login attempt")
+
+    def test_successful_login_redirection(self):
+        login_page = LoginPage(self.driver)
+
+        login_page.open_login_form()
+        # Nhập thông tin đăng nhập hợp lệ
+        login_page.enter_username("superadmin@gmail.com")
+        login_page.enter_password("admin123")
+        login_page.click_login()
+
+        # Kiểm tra chuyển hướng đến trang chủ
+        self.assertIn("home", self.driver.current_url, "Successful login did not redirect to home page")
 
     def tearDown(self):
         self.driver.quit()
@@ -45,4 +69,3 @@ class LoginTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
-
