@@ -1,0 +1,4 @@
+username_field = //*[@id="User"]
+password_field = //*[@id="Password"]
+login_button = //*[@id="Lnew1"]
+error_message = //div[@class='text-danger']
