@@ -1,74 +1,117 @@
-Bug Report: Không thể xóa công việc trong danh sách To-Do
-1. Thông tin chung
-Tiêu đề: Không thể xóa công việc trong danh sách To-Do
-
-Mức độ nghiêm trọng (Severity): High
-
-Mức độ ưu tiên (Priority): Medium
-
-Môi trường:
-
-Hệ điều hành: Windows 11 Home 64-bit
-
-Trình duyệt: Microsoft Edge 123.0.0.0
-
-Phiên bản ứng dụng: v1.2.3
-
-Kết nối mạng: Ethernet
-
-2. Mô tả lỗi
-Người dùng không thể xóa công việc khỏi danh sách. Khi nhấn vào nút "Xóa" bên cạnh một công việc, không có phản hồi nào từ ứng dụng, và console hiển thị lỗi Uncaught TypeError: Cannot read properties of undefined (reading 'removeChild').
-
-3. Bước để tái hiện lỗi
-Truy cập vào ứng dụng tại: https://todo-app.example.com
-
-Thêm một công việc bất kỳ vào danh sách.
-
-Nhấn nút "Xóa" (biểu tượng thùng rác) bên cạnh công việc vừa thêm.
-
-Quan sát hành vi ứng dụng và mở console trình duyệt (F12).
-
-4. Kết quả mong đợi
-Công việc bị xóa khỏi danh sách và không còn hiển thị.
-
-5. Kết quả thực tế
-Công việc vẫn nằm trong danh sách. Console hiển thị lỗi:
-Uncaught TypeError: Cannot read properties of undefined (reading 'removeChild')
-
-6. Ảnh chụp màn hình / Video
-
-7. Ghi chú thêm
-Lỗi chỉ xảy ra khi danh sách có từ hai công việc trở lên.
-
-Có thể do sử dụng sai DOM element khi gọi removeChild().
-
-Lỗi không xảy ra nếu reload trang sau khi thêm công việc.
-
-8. Người báo cáo lỗi
-Tên: Trần Minh Hòa
-
-Email: hoa.tran@example.com
-
-Ngày báo cáo: 18/03/2025
-
-9. Mã nguồn có lỗi
-// Xử lý sự kiện xóa công việc
-taskList.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete-btn")) {
-        const taskItem = e.target.parentElement;
-        taskList.removeChild(taskItem); // Có thể taskItem không nằm trực tiếp trong taskList
-    }
-});
-
-
-10. Đề xuất hướng khắc phục
-Kiểm tra kỹ DOM structure trước khi gọi removeChild.
-
-Đảm bảo phần tử cha cần xóa thực sự là con trực tiếp của taskList.
-
-Cập nhật đoạn mã như sau để đảm bảo tính an toàn:
-if (taskItem && taskItem.parentElement === taskList) {
-    taskList.removeChild(taskItem);
-} else {
-    console.error("Không thể xóa taskItem: phần tử cha không khớp hoặc không tồn tại.");
-}
+Bug Report: Lỗi Không Thể Xóa Công Việc Trong Ứng Dụng To-Do List
+ 
+ 1. Thông Tin Chung
+ - Tiêu đề: Lỗi không thể xóa công việc
+ - Mức độ nghiêm trọng (Severity): High
+ - Mức độ ưu tiên (Priority): Critical
+ - Môi trường:
+   - Hệ điều hành: Windows 10 / macOS Ventura
+   - Trình duyệt: Google Chrome 123.0.0, Firefox 115.0.2
+   - Phiên bản ứng dụng: v1.5.0
+   - Công nghệ sử dụng: JavaScript, Node.js, Express, MongoDB
+ 
+ 2. Mô Tả Lỗi
+ Khi người dùng nhấn vào nút "Xóa" bên cạnh một công việc trong danh sách, công việc không bị xóa khỏi giao diện hoặc database.
+ Kiểm tra console trình duyệt thấy lỗi:
+ ```json
+ Uncaught TypeError: Cannot read properties of null (reading 'removeChild')
+ ```
+ 
+ 3. Bước Để Tái Hiện Lỗi
+ 1. Mở ứng dụng To-Do List tại /todo.
+ 2. Thêm một công việc mới vào danh sách.
+ 3. Nhấn vào nút "Xóa" bên cạnh công việc đó.
+ 4. Kiểm tra danh sách công việc và console trình duyệt.
+ 
+ 4. Kết Quả Mong Đợi
+ - Công việc bị xóa khỏi giao diện ngay lập tức.
+ - Dữ liệu công việc bị xóa khỏi database.
+ - Hiển thị thông báo "Xóa công việc thành công!".
+ 
+ 5. Kết Quả Thực Tế
+ - Công việc không bị xóa khỏi danh sách.
+ - Kiểm tra console thấy lỗi:
+ ```json
+ Uncaught TypeError: Cannot read properties of null (reading 'removeChild')
+ ```
+ - Kiểm tra API thấy request không được gửi đến backend.
+ - Kiểm tra log server thấy lỗi do req.params.id bị undefined.
+ 
+ 6. Ảnh Chụp Màn Hình / Video
+ (Đính kèm ảnh lỗi nếu có)
+ 
+ 7. Ghi Chú Thêm
+ - Kiểm tra console trình duyệt thấy sự kiện click không hoạt động.
+ - Kiểm tra network tab không thấy request DELETE /delete-task/:id.
+ - Kiểm tra log server thấy lỗi do req.params.id không được truyền đúng.
+ 
+ 8. Mã Nguồn Có Lỗi
+ Frontend (HTML & JavaScript)
+ ```html
+ <ul id="task-list">
+     <li id="task-1">
+         Viết báo cáo <button class="delete-task" data-id="1">Xóa</button>
+     </li>
+ </ul>
+ 
+ <script>
+     document.querySelectorAll(".delete-task").forEach(button => {
+         button.addEventListener("click", async (e) => {
+             const taskId = e.target.getAttribute("data-id");
+ 
+             const response = await fetch(`/delete-task/${taskId}`, {
+                 method: "DELETE",
+             });
+ 
+             const result = await response.json();
+             if (result.success) {
+                 e.target.parentElement.remove(); // LỖI: Không kiểm tra nếu phần tử tồn tại
+             } else {
+                 alert("Lỗi: " + result.error);
+             }
+         });
+     });
+ </script>
+ ```
+ 
+ Backend (Node.js & Express)
+ ```javascript
+ app.delete("/delete-task/:id", async (req, res) => {
+     try {
+         const taskId = req.params.id;
+ 
+         if (!taskId) {
+             return res.json({ success: false, error: "Thiếu ID công việc!" });
+         }
+ 
+         await Task.findByIdAndDelete(taskId);
+         res.json({ success: true });
+     } catch (error) {
+         console.error("Lỗi khi xóa công việc:", error);
+         res.json({ success: false, error: "Lỗi server!" });
+     }
+ });
+ ```
+ 
+ 9. Đề Xuất Hướng Khắc Phục
+ 1. Kiểm tra taskId trước khi gọi API
+ ```javascript
+ if (!taskId) {
+     alert("Không tìm thấy ID công việc!");
+     return;
+ }
+ ```
+ 2. Thêm kiểm tra nếu phần tử tồn tại trước khi xóa khỏi DOM
+ ```javascript
+ if (e.target.parentElement) {
+     e.target.parentElement.remove();
+ } else {
+     console.error("Không tìm thấy phần tử công việc.");
+ }
+ ```
+ 3. Kiểm tra ID hợp lệ trước khi xóa trong backend
+ ```javascript
+ if (!mongoose.Types.ObjectId.isValid(taskId)) {
+     return res.json({ success: false, error: "ID không hợp lệ!" });
+ }
+ ```
