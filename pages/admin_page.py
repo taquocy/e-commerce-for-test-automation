@@ -28,4 +28,3 @@ class AdminPage:
 
         except NoSuchElementException:
             print("Admin button not found!")
-
