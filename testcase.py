@@ -16,7 +16,7 @@ try:
     
     # Kiểm tra tiêu đề trang
     assert "Google" in driver.title
-    print("✅ Trang Google mở thành công!")
+    print(" Trang Google mở thành công!")
 
     # Tìm ô tìm kiếm và nhập từ khóa
     search_box = driver.find_element(By.NAME, "q")
@@ -28,11 +28,11 @@ try:
 
     # Kiểm tra kết quả tìm kiếm có xuất hiện không
     results = driver.find_elements(By.CSS_SELECTOR, "h3")
-    assert len(results) > 0, "❌ Không tìm thấy kết quả nào!"
+    assert len(results) > 0, " Không tìm thấy kết quả nào!"
 
-    print(f"✅ Tìm thấy {len(results)} kết quả cho 'Selenium Python'")
+    print(f"Tìm thấy {len(results)} kết quả cho 'Selenium Python'")
 
 finally:
     # Đóng trình duyệt
     driver.quit()
-    print("🔴 Trình duyệt đã đóng.")
+    print("Trình duyệt đã đóng.")
