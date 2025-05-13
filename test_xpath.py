@@ -40,9 +40,9 @@ try:
     # Kiểm tra lỗi đăng nhập
     try:
         error_message = driver.find_element(By.XPATH, xpath_dict["error_message"]).text
-        print(f"❌ Lỗi đăng nhập: {error_message}")
+        print(f" Lỗi đăng nhập: {error_message}")
     except:
-        print("✅ Đăng nhập thành công!")
+        print(" Đăng nhập thành công!")
 
 finally:
     driver.quit()  # Đóng trình duyệt
