@@ -6,23 +6,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-# 🚀 Khởi tạo trình duyệt Chrome
+#  Khởi tạo trình duyệt Chrome
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 
-# 📌 1️⃣ Truy cập trang web
+# Truy cập trang web
 driver.get("https://demoqa.com/automation-practice-form")
 driver.maximize_window()
 
 # Chờ trang tải hoàn toàn
 wait = WebDriverWait(driver, 10)
 
-# 🛠 Xóa iframe quảng cáo nếu có
+#  Xóa iframe quảng cáo nếu có
 ads = driver.find_elements(By.CSS_SELECTOR, "iframe[id^='google_ads_iframe']")
 for ad in ads:
     driver.execute_script("arguments[0].remove();", ad)
 
-# 📌 2️⃣ Nhập thông tin vào form
+#  2️ Nhập thông tin vào form
 driver.find_element(By.ID, "firstName").send_keys("Hoàng Ngọc")
 driver.find_element(By.ID, "lastName").send_keys("Bảo Long")
 driver.find_element(By.ID, "userEmail").send_keys("long104339@donga.edu.vn")
@@ -71,18 +71,18 @@ city = wait.until(EC.element_to_be_clickable((By.ID, "react-select-4-input")))
 city.send_keys("Delhi")
 city.send_keys(Keys.RETURN)
 
-# 📌 3️⃣ Nhấn Submit
+#  3️ Nhấn Submit
 submit_button = driver.find_element(By.ID, "submit")
 driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
 submit_button.click()
 
-# 📌 4️⃣ Kiểm tra kết quả
+#  4️ Kiểm tra kết quả
 try:
     success_message = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "modal-title"))).text
-    assert success_message == "Thanks for submitting the form", "❌ Form không được gửi thành công!"
-    print("✅ Test Passed: Form đã gửi thành công!")
+    assert success_message == "Thanks for submitting the form", " Form không được gửi thành công!"
+    print(" Test Passed: Form đã gửi thành công!")
 except Exception as e:
-    print("❌ Test Failed: Không tìm thấy thông báo xác nhận!", e)
+    print(" Test Failed: Không tìm thấy thông báo xác nhận!", e)
 
 # Đợi 3 giây rồi đóng trình duyệt
 driver.quit()
