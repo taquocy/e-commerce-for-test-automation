@@ -7,66 +7,53 @@ import os
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# Thêm đường dẫn đến thư mục gốc vào sys.path
+# Add project root to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from utils.browser_setup import BrowserSetup
 from pages.product_detail_page import ProductDetailPage
 
-
 class ProductDetailTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # Đọc file config.ini
-        config = configparser.ConfigParser()
-        config.read('config.ini')
-        cls.product_url = config['app'].get('product_url', '')
+        # Read config.ini
+        cls.config = configparser.ConfigParser()
+        cls.config.read('config.ini')
+        cls.product_url = cls.config['app'].get('product_url', '')
 
-        # Khởi tạo trình duyệt
+        # Initialize browser
         cls.driver = BrowserSetup.get_driver()
-        cls.driver.get(cls.product_url)  # Điều hướng đến trang sản phẩm
+        cls.driver.get(cls.product_url)
 
-        # Khởi tạo trang sản phẩm
+        # Initialize ProductDetailPage
         cls.product_page = ProductDetailPage(cls.driver)
 
+    def check_element_displayed(self, element_locator, description):
+        element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(element_locator))
+        self.assertTrue(element.is_displayed(), f"❌ {description} không hiển thị!")
+
     def test_product_image_exists(self):
-        """ Kiểm tra hình ảnh sản phẩm có tồn tại """
-        element = self.driver.find_element(*self.product_page.product_image)
-        self.assertTrue(element.is_displayed(), "❌ Hình ảnh sản phẩm không hiển thị!")
-        print("✅ Hình ảnh sản phẩm hiển thị đúng!")
+        self.check_element_displayed(self.product_page.product_image, "Hình ảnh sản phẩm")
 
     def test_product_name_not_empty(self):
-        """ Kiểm tra tên sản phẩm không rỗng """
         element = self.driver.find_element(*self.product_page.product_name)
-        text = element.text.strip()
-        self.assertTrue(text, "❌ Tên sản phẩm trống!")
-        print(f"✅ Tên sản phẩm: {text}")
+        self.assertTrue(element.text.strip(), "❌ Tên sản phẩm trống!")
 
     def test_product_description_not_empty(self):
-        """ Kiểm tra mô tả sản phẩm không rỗng """
         element = self.driver.find_element(*self.product_page.product_description)
-        text = element.text.strip()
-        self.assertTrue(text, "❌ Mô tả sản phẩm trống!")
-        print(f"✅ Mô tả sản phẩm: {text}")
+        self.assertTrue(element.text.strip(), "❌ Mô tả sản phẩm trống!")
 
     def test_product_price_not_empty(self):
-        """ Kiểm tra giá sản phẩm không rỗng """
         element = self.driver.find_element(*self.product_page.product_price)
-        text = element.text.strip()
-        self.assertTrue(text, "❌ Giá sản phẩm trống!")
-        print(f"✅ Giá sản phẩm: {text}")
+        self.assertTrue(element.text.strip(), "❌ Giá sản phẩm trống!")
 
     def test_add_to_bag_button_exists(self):
-        """ Kiểm tra nút Thêm vào giỏ hàng có tồn tại """
-        element = self.driver.find_element(*self.product_page.add_to_bag_button)
-        self.assertTrue(element.is_displayed(), "❌ Nút Thêm vào giỏ hàng không hiển thị!")
-        print("✅ Nút Thêm vào giỏ hàng hiển thị đúng!")
+        self.check_element_displayed(self.product_page.add_to_bag_button, "Nút Thêm vào giỏ hàng")
 
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
 
-
 if __name__ == "__main__":
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports', report_name='ProductDetailTestReport', report_title='Product Detail Test Report'))
