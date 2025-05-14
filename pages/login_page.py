@@ -12,6 +12,7 @@ class LoginPage:
 
     def open_login_form(self):
         self.driver.find_element(*self.menu_login).click()
+
     # Hàm để nhập tên đăng nhập
     def enter_username(self, username):
         self.driver.find_element(*self.username_input).send_keys(username)
