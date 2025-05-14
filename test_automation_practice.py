@@ -1,88 +1,66 @@
-from selenium import webdriver
+import unittest
+import configparser
+
+import HtmlTestRunner
+import sys
+import os
+
+# Thêm đường dẫn đến thư mục gốc vào sys.path
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait, Select
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 
-# 🚀 Khởi tạo trình duyệt Chrome
-service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from pages.login_page import LoginPage
+from pages.admin_page import AdminPage
+from utils.browser_setup import BrowserSetup
 
-# 📌 1️⃣ Truy cập trang web
-driver.get("https://demoqa.com/automation-practice-form")
-driver.maximize_window()
 
-# Chờ trang tải hoàn toàn
-wait = WebDriverWait(driver, 10)
+class ST23ATestCaseAuto(unittest.TestCase):
 
-# 🛠 Xóa iframe quảng cáo nếu có
-ads = driver.find_elements(By.CSS_SELECTOR, "iframe[id^='google_ads_iframe']")
-for ad in ads:
-    driver.execute_script("arguments[0].remove();", ad)
+    def setUp(self):
+        # Đọc file config.ini
+        config = configparser.ConfigParser()
+        config.read('config.ini')
 
-# 📌 2️⃣ Nhập thông tin vào form
-driver.find_element(By.ID, "firstName").send_keys("Hoàng Ngọc")
-driver.find_element(By.ID, "lastName").send_keys("Bảo Long")
-driver.find_element(By.ID, "userEmail").send_keys("long104339@donga.edu.vn")
+        # Lấy URL trang login từ file config
+        self.login_url = config['app']['login_url']
 
-# 🛠 Cuộn xuống radio button trước khi click
-male_radio = driver.find_element(By.XPATH, "//label[contains(text(),'Male')]")
-driver.execute_script("arguments[0].scrollIntoView(true);", male_radio)
-wait.until(EC.element_to_be_clickable(male_radio)).click()
+        # Khởi tạo trình duyệt
+        self.driver = BrowserSetup.get_driver()
+        self.driver.get("https://demoqa.com/webtables")  # Sử dụng URL từ file config
 
-# Nhập số điện thoại
-driver.find_element(By.ID, "userNumber").send_keys("0123456789")
+    def test_enter_data_sucescssully(self):
+        #Step1 : Tap on Add button
+        btnAdd = self.driver.find_element(By.XPATH, "//button[@id=\"addNewRecordButton\"]")
+        btnAdd.click()
+        #Step2 : Enter firstname = 'Hoang'
+        txtFirstName = self.driver.find_element(By.XPATH,"//input[@id='firstName']")
+        txtFirstName.send_keys("Hoang")
+        #Step3 : Enter lastname = 'Tran'
+        txtLastName = self.driver.find_element(By.XPATH, "//input[@id='lastName']")
+        txtLastName.send_keys("Tran")
+        #Step4 : Enter Email = 'hoang104094@donga.edu.vn'
+        txtEmail = self.driver.find_element(By.ID, "userEmail")
+        txtEmail.send_keys("hoang104094@donga.edu.vn")
+        #step5: Enter Age = '20'
+        txtAge = self.driver.find_element(By.CSS_SELECTOR, "#age")
+        txtAge.send_keys("20")
+        #step6: Enter Salary = '20000000'
+        txtSalary = self.driver.find_element(By.XPATH, "//input[@id='salary']")
+        txtSalary.send_keys("20000000")
+        #Step 7: Enter Department = 'IT'
+        txtDepartMent = self.driver.find_element(By.XPATH, "//input[@id='department']")
+        txtDepartMent.send_keys("IT")
+        #Step 8: Enter submit button
+        self.driver.find_element(By.ID,"submit").click()
+        #Step 9 : Check data appear on table
+        table = self.driver.find_element(By.XPATH, "//div[@class='rt-table']")
+        assert "hoang104094@donga.edu.vn" in table.text, "Thêm dữ liệu thất bại!"
+        return True
 
-# Nhập ngày sinh
-dob = driver.find_element(By.ID, "dateOfBirthInput")
-dob.click()
 
-# Chọn tháng và năm
-Select(driver.find_element(By.CLASS_NAME, "react-datepicker__month-select")).select_by_visible_text("October")
-Select(driver.find_element(By.CLASS_NAME, "react-datepicker__year-select")).select_by_visible_text("2005")
+    def tearDown(self):
+        self.driver.quit()
 
-# Chọn ngày 18
-driver.find_element(By.XPATH, "//div[contains(@class, 'react-datepicker__day--018')]").click()
 
-# Nhập môn học
-subject = driver.find_element(By.ID, "subjectsInput")
-subject.send_keys("Maths")
-subject.send_keys(Keys.RETURN)
-
-# Chọn sở thích "Sports"
-driver.find_element(By.XPATH, "//label[contains(text(),'Sports')]").click()
-
-# Tải lên ảnh
-image_path = r"E:\KTPM2\e-commerce-for-test-automation\tests\test_image.png"
-driver.find_element(By.ID, "uploadPicture").send_keys(image_path)
-
-# Nhập địa chỉ
-driver.find_element(By.ID, "currentAddress").send_keys("Huế")
-
-# Chọn State
-state = wait.until(EC.element_to_be_clickable((By.ID, "react-select-3-input")))
-state.send_keys("NCR")
-state.send_keys(Keys.RETURN)
-
-# Chọn City
-city = wait.until(EC.element_to_be_clickable((By.ID, "react-select-4-input")))
-city.send_keys("Delhi")
-city.send_keys(Keys.RETURN)
-
-# 📌 3️⃣ Nhấn Submit
-submit_button = driver.find_element(By.ID, "submit")
-driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
-submit_button.click()
-
-# 📌 4️⃣ Kiểm tra kết quả
-try:
-    success_message = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "modal-title"))).text
-    assert success_message == "Thanks for submitting the form", "❌ Form không được gửi thành công!"
-    print("✅ Test Passed: Form đã gửi thành công!")
-except Exception as e:
-    print("❌ Test Failed: Không tìm thấy thông báo xác nhận!", e)
-
-# Đợi 3 giây rồi đóng trình duyệt
-driver.quit()
+if __name__ == "__main__":
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
