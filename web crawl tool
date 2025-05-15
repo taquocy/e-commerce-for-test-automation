@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
+import csv
 
 def scrape_tgdd():
     options = webdriver.ChromeOptions()
@@ -28,14 +29,20 @@ def scrape_tgdd():
 
         print(f"\n✅ Tìm thấy {len(items)} sản phẩm:\n")
 
-        for item in items:
-            try:
-                name = item.find_element(By.CSS_SELECTOR, "h3").text.strip()
-                price = item.find_element(By.CSS_SELECTOR, "strong").text.strip()
-                print(f"{name} : {price}")
-            except Exception as e:
-                print("❌ Bỏ qua một sản phẩm (thiếu tên hoặc giá)")
-                continue
+        # Mở file CSV để ghi dữ liệu
+        with open("may_lanh.csv", mode="w", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+            writer.writerow(["Tên sản phẩm", "Giá"])
+
+            for item in items:
+                try:
+                    name = item.find_element(By.CSS_SELECTOR, "h3").text.strip()
+                    price = item.find_element(By.CSS_SELECTOR, "strong").text.strip()
+                    print(f"{name} : {price}")
+                    writer.writerow([name, price])
+                except Exception as e:
+                    print("❌ Bỏ qua một sản phẩm (thiếu tên hoặc giá)")
+                    continue
 
     finally:
         driver.quit()
@@ -43,4 +50,4 @@ def scrape_tgdd():
 if __name__ == "__main__":
     print(">>> Bắt đầu crawl Điện Máy Xanh\n")
     scrape_tgdd()
-    print("\n>>> Kết thúc")
+    print("\n>>> Kết thúc. Dữ liệu đã được lưu vào 'may_lanh.csv'")
