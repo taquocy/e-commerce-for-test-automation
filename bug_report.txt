@@ -1,0 +1,49 @@
+** Bug Report: Lỗi khởi tạo WebDriver trong Selenium**  
+
+### ** Mô tả lỗi**  
+Khi chạy test case Selenium bằng ChromeDriver, chương trình báo lỗi `TypeError: WebDriver.__init__() got multiple values for argument 'options'`.  
+
+### ** Môi trường**  
+- **Hệ điều hành**: Windows 10 64-bit  
+- **Python Version**: 3.x  
+- **Selenium Version**: 4.x  
+- **Chrome Version**: 120.x  
+- **ChromeDriver Version**: 120.x  
+
+### **⚠ Bước tái hiện lỗi**  
+1. Cài đặt các thư viện cần thiết bằng `pip install selenium webdriver-manager`.  
+2. Chạy đoạn mã sau:  
+   ```python
+   from selenium import webdriver
+   from selenium.webdriver.common.by import By
+   from selenium.webdriver.chrome.service import Service
+   from webdriver_manager.chrome import ChromeDriverManager
+
+   options = webdriver.ChromeOptions()
+   driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)  # Lỗi xảy ra ở đây
+   ```
+3. Lỗi xuất hiện:  
+   ```
+   TypeError: WebDriver.__init__() got multiple values for argument 'options'
+   ```
+
+### ** Kết quả mong đợi**  
+- WebDriver khởi tạo đúng cách mà không gặp lỗi.  
+
+### ** Kết quả thực tế**  
+- Lỗi `TypeError` do cách gọi `webdriver.Chrome()` không đúng.  
+
+### **🛠 Cách khắc phục**  
+**Thay đổi cách khởi tạo WebDriver** từ:  
+```python
+   driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+```
+**Thành:**  
+```python
+   service = Service(ChromeDriverManager().install())
+   driver = webdriver.Chrome(service=service, options=options)
+```
+
+### ** Mức độ ưu tiên**: High 
+### ** Trạng thái**: Đã xác nhận / Đang chờ sửa  
+
