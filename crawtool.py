@@ -1,0 +1,49 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+import csv
+
+def scrape_tgdd():
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+    try:
+        url = "https://www.thegioididong.com/laptop-apple"
+        driver.get(url)
+        time.sleep(5)  # chờ trang tải
+
+        # Cuộn xuống vài lần để tải thêm sản phẩm
+        for _ in range(5):
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
+
+        items = driver.find_elements(By.CSS_SELECTOR, "ul.listproduct li")
+
+        print(f"\n✅ Tìm thấy {len(items)} sản phẩm:\n")
+
+        # Mở file CSV để ghi dữ liệu
+        with open("products.csv", mode="w", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+            writer.writerow(["Tên sản phẩm", "Giá"])  # ghi header
+
+            for item in items:
+                try:
+                    name = item.find_element(By.CSS_SELECTOR, "h3").text.strip()
+                    price = item.find_element(By.CSS_SELECTOR, "strong").text.strip()
+                    print(f"{name} : {price}")
+                    writer.writerow([name, price])  # ghi dòng dữ liệu
+                except Exception:
+                    print("❌ Bỏ qua một sản phẩm (thiếu tên hoặc giá)")
+                    continue
+
+    finally:
+        driver.quit()
+
+if __name__ == "__main__":
+    print(">>> Bắt đầu crawl Thế Giới Di Động\n")
+    scrape_tgdd()
+    print("\n>>> Kết thúc")
+    
+    
