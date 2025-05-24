@@ -54,7 +54,6 @@ class CreateNewProductPage():
         self.driver.find_element(*self.photo_input).send_keys(image)
 
     def click_add_product(self):
-        """Nhấn nút 'Add Product' để gửi form."""
         self.driver.find_element(*self.add_product_button).click()
 
     def is_success_message_appeared(self):
