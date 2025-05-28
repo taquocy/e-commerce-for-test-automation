@@ -4,27 +4,48 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+<<<<<<< HEAD
 
 import csv
 
 def crawl_vnexpress_science():
     
+=======
+import csv
+
+def crawl_vnexpress_science():
+  
+>>>>>>> 796c54ea9012586680e5e9e74977a5b54682ea73
     options = Options()
     options.add_argument("--headless")  
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
+<<<<<<< HEAD
+=======
+   
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=options)
+>>>>>>> 796c54ea9012586680e5e9e74977a5b54682ea73
     
     url = "https://vnexpress.net/khoa-hoc"
     driver.get(url)
     
     try:
+<<<<<<< HEAD
         
         wait = WebDriverWait(driver, 10)
         articles = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".item-news")))
 
        
+=======
+       
+        wait = WebDriverWait(driver, 10)
+        articles = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".item-news")))
+
+        
+>>>>>>> 796c54ea9012586680e5e9e74977a5b54682ea73
         article_data = []
         for article in articles:
             try:
@@ -32,12 +53,19 @@ def crawl_vnexpress_science():
                 title = title_element.text.strip()
                 link = title_element.get_attribute("href")
 
+<<<<<<< HEAD
                
+=======
+>>>>>>> 796c54ea9012586680e5e9e74977a5b54682ea73
                 try:
                     description_element = article.find_element(By.CSS_SELECTOR, ".description")
                     description = description_element.text.strip() if description_element else ""
                 except Exception as e:
+<<<<<<< HEAD
                     description = ""  
+=======
+                    description = "" 
+>>>>>>> 796c54ea9012586680e5e9e74977a5b54682ea73
 
                 article_data.append({"title": title, "link": link, "description": description})
             except Exception as e:
@@ -45,7 +73,11 @@ def crawl_vnexpress_science():
 
         driver.quit()
 
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> 796c54ea9012586680e5e9e74977a5b54682ea73
         csv_filename = "vnexpress_science_articles.csv"
         with open(csv_filename, "w", newline="", encoding="utf-8") as file:
             writer = csv.DictWriter(file, fieldnames=["title", "link", "description"])
