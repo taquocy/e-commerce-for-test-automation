@@ -28,7 +28,7 @@ class LoginTest(unittest.TestCase):
 
     def test_valid_login_with_admin_account(self):
         login_page = LoginPage(self.driver)
-        login_page.login("superadmin@gmail.com", "admin123")
+        login_page.login("superadmin_2@gmail.com", "admin123")
 
         admin_page = AdminPage(self.driver)
         admin_page.check_admin_page_display()

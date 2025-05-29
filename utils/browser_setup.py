@@ -16,10 +16,11 @@ class BrowserSetup:
         # Tạo instance của WebDriver (Chrome ở đây)          
         service = Service(driver_path)  # Create a Service object with the path to chromedriver
         driver = webdriver.Chrome(service=service)
+        driver.implicitly_wait(10)
 
         # Tạo instance của WebDriver (Chrome ở đây)
         # driver = webdriver.Chrome(executable_path=driver_path)
-        driver.implicitly_wait(26)
+        driver.implicitly_wait(30)
         driver.maximize_window()
         return driver
 

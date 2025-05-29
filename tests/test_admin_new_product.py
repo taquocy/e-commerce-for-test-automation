@@ -32,7 +32,7 @@ class CreateNewProductTest(unittest.TestCase):
 
         login_page.open_login_form()
         # Nhập thông tin đăng nhập
-        login_page.enter_username("superadmin@gmail.com")
+        login_page.enter_username("superadmin_2@gmail.com")
         login_page.enter_password("admin123")
         login_page.click_login()
 

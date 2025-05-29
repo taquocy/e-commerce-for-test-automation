@@ -7,3 +7,5 @@ TestReport_*.html
 __pycache__
 
 note.md
+
+LoginTestReport___*.html

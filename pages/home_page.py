@@ -10,7 +10,7 @@ class HomePage:
 
         # Xác định các phần tử trên trang Home
         self.add_to_basket_button = (By.XPATH, "//button[text()='Add to Basket']")
-        self.add_to_cart_button = (By.XPATH, "//button[text()='Add to Cart']")
+        self.add_to_cart_button = (By.XPATH, "//button[text()='Add to cart']")
         self.load_more_button = (By.XPATH, "//button[text()='Load More']")
 
     def click_add_to_basket(self):

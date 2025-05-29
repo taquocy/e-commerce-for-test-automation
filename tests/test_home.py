@@ -14,7 +14,7 @@ class TestHomePage(unittest.TestCase):
         """Initialize the browser before running test cases"""
         cls.config = cls.load_config()
         cls.driver = BrowserSetup.get_driver()
-        cls.driver.get(cls.config['app']['login_url'])
+        cls.driver.get(cls.config['app']['home_url'])
 
     @staticmethod
     def load_config():
