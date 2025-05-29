@@ -1,0 +1,9 @@
+# Ignore virtual environment
+venv/
+
+# Ignore TestReport HTML files
+TestReport_*.html
+
+__pycache__
+
+note.md
