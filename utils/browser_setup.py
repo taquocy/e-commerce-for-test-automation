@@ -1,25 +1,27 @@
 import configparser
+import tempfile
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-
+from webdriver_manager.chrome import ChromeDriverManager
 
 class BrowserSetup:
     @staticmethod
     def get_driver():
         # Đọc file config.ini
         config = configparser.ConfigParser()
-        config.read('config.ini')  # Đọc file config.ini từ thư mục gốc
+        config.read('config.ini')
 
-        # Lấy path driver từ phần cấu hình webdriver
-        driver_path = config['webdriver']['driver_path']
+        # Tạo options cho Chrome
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')  # Chạy headless trong CI
+        options.add_argument('--no-sandbox')  # Cần thiết cho CI
+        options.add_argument('--disable-dev-shm-usage')  # Tránh lỗi bộ nhớ
+        options.add_argument('--disable-gpu')  # Tắt GPU trong headless
+        temp_dir = tempfile.mkdtemp()  # Tạo thư mục tạm duy nhất
+        options.add_argument(f'--user-data-dir={temp_dir}')
 
-        # Tạo instance của WebDriver (Chrome ở đây)          
-        service = Service(driver_path)  # Create a Service object with the path to chromedriver
-        driver = webdriver.Chrome(service=service)
-
-        # Tạo instance của WebDriver (Chrome ở đây)
-        # driver = webdriver.Chrome(executable_path=driver_path)
+        # Sử dụng webdriver_manager để tự động tải ChromeDriver
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=options)
         driver.implicitly_wait(5)
-        # driver.maximize_window()
         return driver
-
