@@ -44,6 +44,7 @@ class HomePageTest(unittest.TestCase):
     def test_load_more_functionality(self):
         """Kiểm tra chức năng của nút 'Load More'."""
         self.home_page.click_load_more()
+        self.home_page.click_load_more()
         self.assertTrue(self.home_page.wait_for_load_more_results(), "Nội dung mới không được tải sau khi nhấn 'Load More'.")
 
     def tearDown(self):

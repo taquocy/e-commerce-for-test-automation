@@ -15,6 +15,9 @@ class LoginPage:
         self.login_button = (By.XPATH, "//button[@type='submit']")
 
     def open_login_form(self):
+        # Nếu đã ở trang login thì không cần click menu_login
+        if "/signin" in self.driver.current_url:
+            return
         self.wait.until(EC.element_to_be_clickable(self.menu_login)).click()
 
     def enter_username(self, username: str):
