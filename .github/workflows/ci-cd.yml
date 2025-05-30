@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ linux_vu_st23c ]
   pull_request:
-    branches: [ main ]
+    branches: [ linux_vu_st23c ]
 
 jobs:
   build-and-test:
