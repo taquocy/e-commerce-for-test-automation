@@ -28,15 +28,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # - name: Run tests
-    #   run: |
-    #     pytest tests/ -v --html=report.html
-
-    # - name: Upload test report
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: test-report
-    #     path: report.html
 
     - name: Login to Docker Hub
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'

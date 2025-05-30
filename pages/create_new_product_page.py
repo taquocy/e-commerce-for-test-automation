@@ -15,7 +15,7 @@ class CreateNewProductPage:
         self.add_photo_button = (By.CSS_SELECTOR, "button.chakra-button.css-196gjj0")
         self.photo_input = (By.CSS_SELECTOR, "input[name^='photos.0']")
         self.add_product_button = (By.CSS_SELECTOR, "button[type='submit'].chakra-button.css-1qqymvj")
-        self.message_create_product_successfully = (By.XPATH, "//span[contains(text(), 'Add product successfully')]")
+        self.message_create_product_successfully = (By.XPATH, "//span[contains(text(), 'Add Product is successfully')]")
 
     def enter_title(self, title):
         try:

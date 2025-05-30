@@ -38,11 +38,10 @@ class CreateNewProductTest(unittest.TestCase):
     def setUp(self):
         self.admin_page = AdminPage(self.driver)
         logging.info("Initialized AdminPage object")
-        # Điều hướng về trang chủ để thấy navbar
         self.driver.get(self.config['app']['home_url'])
         time.sleep(1)
 
-    def test_creat_new_product_successfully(self):
+    def test_create_new_product(self):
         logging.info("Testing create new product")
         create_new_product_page = self.admin_page.open_new_product_page()
         self.assertTrue(self.admin_page.check_new_product_page_display(), "❌ New product page not displayed")
@@ -54,7 +53,7 @@ class CreateNewProductTest(unittest.TestCase):
         create_new_product_page.enter_image_url("https://images.unsplash.com/photo-1726839662758-e3b5da59b0fb?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
         create_new_product_page.click_add_product()
         
-        # self.assertTrue(create_new_product_page.is_success_message_appeared(), "❌ Success message did not appear")
+        self.assertTrue(create_new_product_page.is_success_message_appeared(), "❌ Success message did not appear")
 
     @classmethod
     def tearDownClass(cls):
