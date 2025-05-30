@@ -6,6 +6,6 @@ TestReport_*.html
 
 __pycache__
 
-note.md
+*.md
 
 LoginTestReport___*.html

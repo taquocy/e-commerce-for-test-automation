@@ -1,8 +1,8 @@
 login_test_cases = [
     {
         "case": "Valid admin login",
-        "username": "admin1@gmail.com",
-        "password": "admin1admin1",
+        "username": "admin@gmail.com",
+        "password": "adminadmin",
         "expect_success": True
     },
     # {
