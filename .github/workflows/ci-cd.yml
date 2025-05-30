@@ -25,13 +25,13 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest discover -s tests
+        pytest tests/ -v --html=report.html
 
-    # - name: Upload test report
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: test-report
-    #     path: report.html
+    - name: Upload test report
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-report
+        path: report.html
 
     - name: Login to Docker Hub
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
