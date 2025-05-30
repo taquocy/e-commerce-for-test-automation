@@ -9,7 +9,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from utils.browser_setup import BrowserSetup
-from pages.Home_page import HomePage
+from pages.home_page import HomePage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -43,6 +43,7 @@ class HomePageTest(unittest.TestCase):
 
     def test_load_more_functionality(self):
         """Kiểm tra chức năng của nút 'Load More'."""
+        self.home_page.click_load_more()
         self.home_page.click_load_more()
         self.assertTrue(self.home_page.wait_for_load_more_results(), "Nội dung mới không được tải sau khi nhấn 'Load More'.")
 

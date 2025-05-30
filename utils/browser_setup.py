@@ -19,7 +19,7 @@ class BrowserSetup:
 
         # Tạo instance của WebDriver (Chrome ở đây)
         # driver = webdriver.Chrome(executable_path=driver_path)
-        driver.implicitly_wait(26)
-        driver.maximize_window()
+        driver.implicitly_wait(5)
+        # driver.maximize_window()
         return driver
 
