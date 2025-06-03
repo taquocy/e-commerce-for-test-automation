@@ -1,0 +1,94 @@
+Thông Tin Chung
+Tiêu đề: Không thể submit form Practice Form dù đã điền đầy đủ thông tin
+
+Mức độ nghiêm trọng (Severity): High
+
+Mức độ ưu tiên (Priority): Critical
+
+Môi trường:
+
+Hệ điều hành: Windows 11 Pro
+
+Trình duyệt: Google Chrome 124.0.6367.119, Firefox 115.0.2
+
+URL: https://demoqa.com/automation-practice-form
+
+Công nghệ sử dụng: ReactJS, JavaScript, Node.js
+
+2. Mô Tả Lỗi
+Khi người dùng điền đầy đủ thông tin vào các trường bắt buộc (First Name, Last Name, Email, Mobile, Gender) và nhấn Submit, form không được gửi đi. Không có bất kỳ thông báo thành công hoặc lỗi nào hiển thị cho người dùng.
+
+Kiểm tra console trình duyệt thấy lỗi:
+
+javascript
+Sao chép
+Chỉnh sửa
+Uncaught TypeError: Cannot read properties of null (reading 'value')
+3. Các Bước Để Tái Hiện Lỗi
+Truy cập trang https://demoqa.com/automation-practice-form
+
+Điền thông tin hợp lệ vào các trường:
+
+First Name, Last Name, Email
+
+Chọn giới tính
+
+Điền Mobile Number
+
+Bấm vào nút Submit ở cuối form
+
+Quan sát giao diện và kiểm tra console của trình duyệt
+
+4. Kết Quả Mong Đợi
+Form được submit thành công
+
+Hiển thị modal thông báo "Thanks for submitting the form"
+
+Thông tin người dùng được lưu (giả lập hoặc thực tế)
+
+5. Kết Quả Thực Tế
+Không có phản hồi khi nhấn Submit
+
+Console trình duyệt hiện lỗi:
+
+javascript
+Sao chép
+Chỉnh sửa
+Uncaught TypeError: Cannot read properties of null (reading 'value')
+Form không được gửi đi, không có request nào được thực hiện.
+
+
+6. Ghi Chú Thêm
+Lỗi có thể liên quan đến việc kiểm tra các trường ẩn trong DOM không tồn tại.
+
+Có vẻ hệ thống vẫn cố đọc giá trị của trường bị null.
+
+Kiểm tra bằng Inspect Elements thấy một số trường như Subjects, State/City có thể đang gây lỗi nếu bỏ trống.
+
+7. Mã Nguồn Có Lỗi (Dựa Trên Phân Tích Console)
+JavaScript (Giả lập xử lý submit)
+
+javascript
+Sao chép
+Chỉnh sửa
+if (document.getElementById('subjectsInput').value === "") {
+    // ... Submit Fail
+}
+Lỗi xảy ra nếu document.getElementById('subjectsInput') không tồn tại hoặc bị null.
+
+8. Đề Xuất Hướng Khắc Phục
+Thêm kiểm tra null trước khi truy cập .value
+
+javascript
+Sao chép
+Chỉnh sửa
+const subjectInput = document.getElementById('subjectsInput');
+if (subjectInput && subjectInput.value === "") {
+    // Xử lý bình thường
+} else {
+    // Tránh lỗi null
+}
+Thêm validate chính xác các trường bắt buộc (Required fields) và hiển thị thông báo nếu thiếu.
+
+Thêm kiểm tra khi click Submit: Nếu thiếu State hoặc City thì hiển thị lỗi hợp lý thay vì vỡ form.
+
