@@ -78,7 +78,7 @@ const resetForm = () => {
             size="large"
             @click="submitForm"
             class="signup-btn"
-         >Sign up</el-button>
+         >Sign upp</el-button>
       </el-form-item>
 
       <p class="signup-text">
