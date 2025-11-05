@@ -31,7 +31,7 @@ class LoginTest(unittest.TestCase):
 
         login_page.open_login_form()
         # Nhập thông tin đăng nhập
-        login_page.enter_username("superadmin@gmail.com")
+        login_page.enter_username("adminit24m@gmail.com")
         login_page.enter_password("admin123")
         login_page.click_login()
 

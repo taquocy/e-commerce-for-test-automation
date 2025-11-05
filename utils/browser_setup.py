@@ -1,5 +1,7 @@
 import configparser
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 
 class BrowserSetup:
     @staticmethod
@@ -12,7 +14,10 @@ class BrowserSetup:
         driver_path = config['webdriver']['driver_path']
 
         # Tạo instance của WebDriver (Chrome ở đây)
-        driver = webdriver.Chrome(executable_path=driver_path)
+        service = Service(executable_path=driver_path)
+        options = Options()
+        driver = webdriver.Chrome(service=service, options=options)
+
         driver.implicitly_wait(26)
         driver.maximize_window()
         return driver
