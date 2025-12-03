@@ -2,6 +2,8 @@ import configparser
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 class BrowserSetup:
     @staticmethod
@@ -16,7 +18,10 @@ class BrowserSetup:
         # Tạo instance của WebDriver (Chrome ở đây)
         service = Service(executable_path=driver_path)
         options = Options()
-        driver = webdriver.Chrome(service=service, options=options)
+        # driver = webdriver.Chrome(service=service, options=options)
+        # Cách mới để khởi tạo driver
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service)
 
         driver.implicitly_wait(26)
         driver.maximize_window()
